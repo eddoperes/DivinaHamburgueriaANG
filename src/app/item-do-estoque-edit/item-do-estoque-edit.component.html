@@ -1,0 +1,30 @@
+<p>item-do-estoque-edit works!</p>
+
+<form #form="ngForm" *ngIf="item !== undefined">
+
+    <input type="hidden" name="id" [ngModel]="item.id">
+
+    <label>Nome:</label><br>
+    <input type="text" name="nome"  [ngModel]="item.nome">
+    <br><br>
+
+    <label>Marca:</label><br>
+    <input type="text" name="marca"  [ngModel]="item.marca">
+    <br><br>
+
+    <label>Conteúdo:</label><br>
+    <input type="number" name="conteudo"  [ngModel]="item.conteudo">
+    <br><br>
+
+    <label>Unidade:</label><br>
+    <select name="unidadeId"  [ngModel]="item.unidadeId" >
+        <option value={{unidade.id}} *ngFor="let unidade of unidades">
+            {{unidade.nome}}
+        </option>
+    </select>
+    <br><br>
+
+    <button (click)="Enviar(item.id, form.value)">Enviar</button>
+
+</form>
+
