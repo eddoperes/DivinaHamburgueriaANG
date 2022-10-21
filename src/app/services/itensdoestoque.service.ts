@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Itensdoestoque } from '../module/itensdoestoque';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItensdoestoqueService {
 
-  private url: string = "https://localhost:7024/itensdoestoquereceita";
+  private url: string = `${environment.url}/inventoryitems`;
 
   constructor(private http: HttpClient) { }
   

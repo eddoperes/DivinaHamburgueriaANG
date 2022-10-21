@@ -10,6 +10,8 @@ import { ItemDoEstoqueComponent } from './item-do-estoque/item-do-estoque.compon
 import { FormsModule } from '@angular/forms';
 import { ItemDoEstoqueEditComponent } from './item-do-estoque-edit/item-do-estoque-edit.component';
 
+import {MatIconModule} from '@angular/material/icon'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { ItemDoEstoqueEditComponent } from './item-do-estoque-edit/item-do-estoq
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

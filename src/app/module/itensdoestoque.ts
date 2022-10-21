@@ -1,7 +1,8 @@
 export interface Itensdoestoque {
     id : number,
-    nome : string,
-    marca: string,
-    conteudo: number,
-    unidadeId: number
+    name : string,
+    brand: string,
+    content: number,
+    unityId: number,
+    type: number
 }

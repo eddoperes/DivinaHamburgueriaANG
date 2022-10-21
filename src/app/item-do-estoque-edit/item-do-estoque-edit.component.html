@@ -1,30 +1,64 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <p>item-do-estoque-edit works!</p>
 
-<form #form="ngForm" *ngIf="item !== undefined">
+<mat-icon>delete</mat-icon>
+
+<form #form="ngForm" *ngIf="item !== undefined" (ngSubmit)="Enviar(item.id, form)">
 
     <input type="hidden" name="id" [ngModel]="item.id">
 
-    <label>Nome:</label><br>
-    <input type="text" name="nome"  [ngModel]="item.nome">
+    <label htmlFor="name">Nome:
+        <br>
+        <input type="text" 
+            name="name"
+            required         
+            maxlength="20"  
+            [ngModel]="item.name"
+            #name="ngModel">
+        <label *ngIf="name.errors?.['required']" class="warning">
+            <br>
+            * name is required.
+        </label>
+        <label *ngIf="name.errors?.['maxlength']" class="warning">
+            <br>
+            * máximo de 20 caracteres.
+        </label>
+    </label>
     <br><br>
 
     <label>Marca:</label><br>
-    <input type="text" name="marca"  [ngModel]="item.marca">
+    <input type="text" name="brand"  [ngModel]="item.brand">
     <br><br>
 
     <label>Conteúdo:</label><br>
-    <input type="number" name="conteudo"  [ngModel]="item.conteudo">
+    <input type="number" name="content"  [ngModel]="item.content">
     <br><br>
 
     <label>Unidade:</label><br>
-    <select name="unidadeId"  [ngModel]="item.unidadeId" >
+    <select name="unityId"  [ngModel]="item.unityId" >
         <option value={{unidade.id}} *ngFor="let unidade of unidades">
-            {{unidade.nome}}
+            {{unidade.name}}
         </option>
     </select>
     <br><br>
 
-    <button (click)="Enviar(item.id, form.value)">Enviar</button>
+    <label>Tipo:</label><br>
+    <select name="type"  [ngModel]="item.type" >
+        <option value={{1}}>
+            Receita
+        </option>
+        <option value={{2}}>
+            Revenda
+        </option>
+    </select>
+    <br><br>
+
+    <!--
+        <button (click)="Enviar(item.id, form.value)">Enviar</button>
+    -->
+
+    <input type="submit" Value="Enviar">
 
 </form>
 

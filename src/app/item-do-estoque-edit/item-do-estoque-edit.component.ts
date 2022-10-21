@@ -6,6 +6,8 @@ import { Unidades } from '../module/unidades';
 
 import { ItensdoestoqueService } from 'src/app/services/itensdoestoque.service';
 
+//import {MatIconModule} from '@angular/material/icon'
+
 @Component({
   selector: 'app-item-do-estoque-edit',
   templateUrl: './item-do-estoque-edit.component.html',
@@ -36,10 +38,16 @@ export class ItemDoEstoqueEditComponent implements OnInit {
 
   }
 
-  public Enviar(id: number, form: string){
+  public Enviar(id: number, form: any){
     
+    if (!form.valid) {
+      //console.log(form)      
+      //form..reportValidity()
+      return;
+    }
+
     this.itensdoestoqueService
-        .itensDoEstoqueEdit(id, form)    
+        .itensDoEstoqueEdit(id, form.value)    
         .subscribe({
           next: (res) => { /*console.log(res)*/ },
           error: (error) => { console.log(error) }

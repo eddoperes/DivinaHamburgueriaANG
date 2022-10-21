@@ -1,0 +1,12 @@
+input[type = text]:invalid{
+    background-color: #ffefef;
+    border-color: red;
+}
+
+input[type = text]{
+    background-color: lightcyan;
+}
+
+.warning{
+    color:red;
+}
