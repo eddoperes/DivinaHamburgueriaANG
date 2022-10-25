@@ -1,27 +1,22 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<p>item-do-estoque-edit works!</p>
-
-<mat-icon>delete</mat-icon>
+<h1>Editar item do estoque</h1>
 
 <form #form="ngForm" *ngIf="item !== undefined" (ngSubmit)="Enviar(item.id, form)">
 
     <input type="hidden" name="id" [ngModel]="item.id">
 
     <label htmlFor="name">Nome:
-        <br>
         <input type="text" 
-            name="name"
-            required         
-            maxlength="20"  
-            [ngModel]="item.name"
-            #name="ngModel">
+               name="name"
+               required         
+               maxlength="20"  
+               [ngModel]="item.name"
+               #name="ngModel">
         <label *ngIf="name.errors?.['required']" class="warning">
-            <br>
-            * name is required.
+            * o nome é requerido.
         </label>
         <label *ngIf="name.errors?.['maxlength']" class="warning">
-            <br>
             * máximo de 20 caracteres.
         </label>
     </label>
@@ -31,8 +26,20 @@
     <input type="text" name="brand"  [ngModel]="item.brand">
     <br><br>
 
-    <label>Conteúdo:</label><br>
-    <input type="number" name="content"  [ngModel]="item.content">
+    <label>Conteúdo:
+    <input type="number" 
+           name="content"  
+           required
+           min="1"
+           [ngModel]="item.content"
+           #content="ngModel">
+        <label *ngIf="content.errors?.['required']" class="warning">
+            * o conteúdo é requerido.
+        </label>
+        <label *ngIf="content.errors?.['min']" class="warning">
+            * o conteúdo mínimo é 1.
+        </label>
+    </label>
     <br><br>
 
     <label>Unidade:</label><br>

@@ -10,14 +10,18 @@ import { ItemDoEstoqueComponent } from './item-do-estoque/item-do-estoque.compon
 import { FormsModule } from '@angular/forms';
 import { ItemDoEstoqueEditComponent } from './item-do-estoque-edit/item-do-estoque-edit.component';
 
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemDoCardapioComponent,
     ItemDoEstoqueComponent,
-    ItemDoEstoqueEditComponent
+    ItemDoEstoqueEditComponent,
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

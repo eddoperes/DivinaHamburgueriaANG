@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Itensdoestoque } from '../module/itensdoestoque';
-import { UnidadesService } from 'src/app/services/unidades.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Unidades } from '../module/unidades';
-
+import { UnidadesService } from 'src/app/services/unidades.service';
+import { Itensdoestoque } from '../module/itensdoestoque';
 import { ItensdoestoqueService } from 'src/app/services/itensdoestoque.service';
-
-//import {MatIconModule} from '@angular/material/icon'
 
 @Component({
   selector: 'app-item-do-estoque-edit',
@@ -17,11 +14,12 @@ export class ItemDoEstoqueEditComponent implements OnInit {
 
   constructor(private itensdoestoqueService: ItensdoestoqueService,
               private route: ActivatedRoute, 
+              private router: Router,
               private unidadesService: UnidadesService){}
 
-  public item: Itensdoestoque | undefined = undefined;
   public unidades: Array<Unidades> = [];
-
+  public item: Itensdoestoque | undefined = undefined;
+  
   ngOnInit(): void {
 
     var id = this.route.snapshot.paramMap.get('id');
@@ -49,7 +47,7 @@ export class ItemDoEstoqueEditComponent implements OnInit {
     this.itensdoestoqueService
         .itensDoEstoqueEdit(id, form.value)    
         .subscribe({
-          next: (res) => { /*console.log(res)*/ },
+          next: (res) => {this.router.navigateByUrl('itensdoestoque')},
           error: (error) => { console.log(error) }
         });  
                 
