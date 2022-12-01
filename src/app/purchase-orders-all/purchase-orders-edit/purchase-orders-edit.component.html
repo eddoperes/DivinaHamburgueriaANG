@@ -1,0 +1,13 @@
+<h1 class="h1-edit">Editar pedido e compra</h1>
+
+<p class="error-message-edit" *ngIf="purchaseOrderError?.message">
+    {{purchaseOrderError.message}}
+</p>  
+
+<p class="waiting-icon-edit" *ngIf="purchaseOrderWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<app-purchase-orders [sendData]="sendDataFunctionPointer"
+                     [setFormComponent]="setFormComponentFunctionPointer"
+></app-purchase-orders>

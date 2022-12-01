@@ -1,0 +1,109 @@
+<p class="error-message" *ngIf="providersError?.message">
+    {{providersError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="providersWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<p class="error-message" *ngIf="inventoryItemsError?.message">
+    {{inventoryItemsError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="inventoryItemsWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<form class="form-edit" [formGroup]="purchaseOrderForm" *ngIf="isDependecyReady()" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" >
+
+    <label > Fornecedor          
+        <select formControlName="providerId"  
+                class="select-edit"             
+        >
+            <option value={{provider.id}} *ngFor="let provider of providers">
+                {{provider.name}}
+            </option>                   
+        </select>          
+    </label>
+
+    <label > Observação          
+        <textarea formControlName="observation"
+                  class="textarea-edit"                               
+        >
+        </textarea>          
+    </label>
+
+    <label>Total
+        <label *ngIf="totalError" class="warning-edit">
+            {{totalError}}
+        </label>
+        <input type="number"
+               class='input-edit input-edit-number'
+               formControlName="total"
+               min="1"    
+        />
+    </label>
+
+    <div class='accordion-container'>
+        <button class="accordion-button" (click)="AccordionClick($event)">
+          Itens
+        </button>
+        <div class="accordion-panel"
+            [style]="accordionPanelStyle"
+        >
+
+            <div #inventoryItemsContainer>                
+            </div>
+            
+            <button (click)="newItem($event)"                  
+                    class="input-edit-submit"
+                    [disabled]="disableItemsButtons"
+            >Adicionar</button>
+            <div class="clear-both">                
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+
+        <label > Estado
+            <select class="select-edit"  
+                    formControlName="state"                                 
+            >                
+                    <option value="1">
+                        Cotação
+                    </option> 
+                    <option value="2">
+                        Emitido
+                    </option> 
+                    <option value="3">
+                        Cancelado
+                    </option>
+                    <option value="4">
+                        Entregue
+                    </option>                              
+            </select>          
+        </label>
+
+        <label > Pagamento
+            <select class="select-edit"    
+                    formControlName="payment"                            
+            >                
+                    <option value="1">
+                        Aberto
+                    </option> 
+                    <option value="2">
+                        Pago
+                    </option>                                                      
+            </select>          
+        </label>
+
+    </div>
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           />
+
+</form>

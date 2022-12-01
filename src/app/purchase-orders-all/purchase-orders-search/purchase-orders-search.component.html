@@ -1,0 +1,119 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<h1 class="h1-list">
+    Pedidos de compra
+</h1>    
+
+<form class="form-list" #form="ngForm" (ngSubmit)="handleSubmit(form)">
+
+    <div class="main-filter">
+
+        <div class="left-filter">
+            
+            <label>
+                <input type="radio" 
+                      class="input-list"                                        
+                      id="provider" 
+                      name="provider" 
+                      [checked]="!filter.providerDisabled"   
+                      (change)="providerSpecificChange($event)"
+                      />
+                Fornecedor
+            </label>
+            <select [(ngModel)]="filter.providerId"
+                    #type="ngModel"
+                    name="provider" 
+                    disabled={{filter.providerDisabled}}
+                    class="select-list"
+            >
+                <option value={{provider.id}} *ngFor="let provider of providers">
+                    {{provider.name}}
+                </option>                  
+            </select>              
+
+        </div>
+
+        <div className="right-filter">
+            <label>
+                <input type="radio" 
+                       class="input-list"
+                       id="provider" 
+                       name="provider" 
+                       (change)="providerAnyChange($event)"
+                       [checked]="filter.providerDisabled" 
+                       value="*"  />
+                Qualquer
+            </label>
+        </div>
+
+    </div>
+
+    <div>
+        <input type="submit" 
+            class="input-list-submit" 
+            value="Pesquisar" />                            
+    </div> 
+    <div class='clear-both'>
+    </div> 
+
+</form>
+
+
+<div class="button-new-list-container">
+    <a [routerLink]="['/purchaseorders/new']"  >
+        <button class='button-new-list'>
+            <mat-icon>add_to_photos</mat-icon>
+        </button>                
+    </a>    
+</div>
+
+
+<p class="error-message" *ngIf="purchaseOrdersError?.message">
+    {{purchaseOrdersError.message}}
+</p>  
+<p class="error-message" *ngIf="providersError?.message">
+    {{providersError.message}}
+</p>
+
+<p class="waiting-icon" *ngIf="providersWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+<p class="waiting-icon" *ngIf="purchaseOrdersWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+
+<div class="card-container">
+
+    <div *ngFor="let item of purchaseorders" >
+
+        <div class='card'>
+            <div>
+                {{getProviderName(item.providerId)}}
+            </div>  
+            <div>
+                {{item.observation}}
+            </div>  
+            <div>
+                {{getStateDescription(item.state)}}                                           
+            </div> 
+            <div>
+                {{getPaymentDescription(item.payment)}}                                           
+            </div> 
+            <div>
+                <div>{{item.total | currency}}</div>
+            </div>              
+            <div>
+                <a [routerLink]="['/purchaseorders/edit', item.id]"  >
+                    <button class='button-edit-list'>
+                        <mat-icon>edit</mat-icon>
+                    </button>                       
+                </a>                                                                                               
+            </div>                    
+        </div>
+
+    </div>
+
+</div>
+
+

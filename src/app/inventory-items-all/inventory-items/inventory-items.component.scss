@@ -1,0 +1,216 @@
+/*
+.h1-edit{
+    text-align: center;
+}
+
+.form-edit{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+.input-edit, 
+.select-edit{    
+    margin-bottom: 10px;
+}
+
+.select-edit{
+    width: 100%;
+}
+
+.input-edit-text,
+.input-edit-number{
+    width: 99%;
+}
+
+.input-edit-text:invalid,
+.input-edit-number:invalid{
+    background-color: #fffafa;
+    border-color: red;
+}
+
+.input-edit-submit{
+    margin-top: 10px;
+    float: right;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    background-color: #009900;
+    border: 1px solid #007700;
+}
+
+.input-edit-submit:hover{
+    background-color: #007700;
+}
+
+.input-edit-submit-remove{
+    margin-top: 10px;
+    float: right;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    background-color: #990000;
+    border: 1px solid #770000;
+}
+
+.input-edit-submit-remove:hover{
+    background-color: #770000;
+}
+
+.warning-edit{
+    color:#bb0000;
+    float: right;
+}
+
+.clear-both{
+    clear: both;
+}
+
+
+.accordion-container{
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+.accordion-button {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 3px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.5s;
+    border: 1px solid black; 
+  }
+  
+  .accordion-active, .accordion-button:hover {
+    background-color: #ccc; 
+  }
+  
+  .accordion-panel {
+    display: none;
+    padding: 10px;
+    border: 1px solid black;  
+    border-top: none;  
+  }
+
+  .accordion-up{
+    font-size: larger;
+    float: right;
+    display: none;
+  }
+
+  .accordion-down{
+    font-size: larger;
+    float: right;
+  }
+
+.error-message-edit,
+.waiting-icon-edit
+{
+    text-align: center;
+}
+
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+  
+  .active, .accordion:hover {
+    background-color: #ccc; 
+  }
+  
+  .panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+  }
+
+
+/*
+form{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+input[type = text]:invalid,
+input[type = number]:invalid{
+    background-color: #fffafa;
+    border-color: red;
+}
+
+input[type = text],
+input[type = number]{
+    width: 99%;
+}
+
+input[type = submit]{
+    margin-top: 10px;
+    float: right;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+}
+
+input, 
+select{    
+    margin-bottom: 10px;
+}
+
+select{
+    width: 100%;
+}
+
+.submitEdit{
+    background-color: #009900;
+    border: 1px solid #007700;
+}
+
+.submitEdit:hover{
+    background-color: #007700;
+}
+
+.submitRemove{
+    background-color: #990000;
+    border: 1px solid #770000;
+}
+
+.submitRemove:hover{
+    background-color: #770000;
+}
+
+.warning{
+    color:#bb0000;
+    float: right;
+}
+
+.clear-both{
+    clear: both;
+}
+
+*/
