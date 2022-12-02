@@ -1,0 +1,52 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="navbar">
+
+    <a [routerLink]="['/']"  >
+        <mat-icon>home</mat-icon>
+        Home
+    </a>
+      
+    <div class="dropdown">
+      <button class="dropbtn">           
+        <mat-icon>fastfood</mat-icon>
+        Pedidos
+      </button>
+      <div class="dropdown-content">
+        <a >Itens do cardápio</a>
+        <a >Cardápios</a>         
+        <hr />
+        <a >Pedidos salão</a>
+        <a >Pedidos delivery</a>
+      </div>        
+    </div> 
+
+    <div class="dropdown">
+      <button class="dropbtn">           
+        <mat-icon>shopping_cart</mat-icon>
+        Estoques
+      </button>
+      <div class="dropdown-content">
+        <a [routerLink]="['/inventoryitems']">Itens do estoque</a>
+        <a [routerLink]="['/purchaseorders']">Pedidos compra</a>
+        <hr />
+        <a>Estoques</a>
+      </div>        
+    </div> 
+
+    <div class="dropdown">
+      <button class="dropbtn">           
+        <mat-icon>camera</mat-icon>
+        Inspeção
+      </button>
+      <div class="dropdown-content">
+        <a [routerLink]="['/']">Alarmes</a>
+      </div>        
+    </div> 
+    
+    <a >
+      <mat-icon>supervisor_account</mat-icon>
+      Login
+    </a>
+
+  </div>    

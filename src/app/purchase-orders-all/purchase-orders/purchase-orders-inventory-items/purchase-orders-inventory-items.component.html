@@ -1,0 +1,73 @@
+<form *ngIf="isDependecyReady()" [formGroup]="purchaseOrderInventoryItemsForm" >
+
+    <div *ngIf="number === 0" class='inventory-item-container'>
+        <label class="select-edit-inventory-item">
+                Item
+        </label>   
+        <label class="input-edit-inventory-item input-edit-number-inventory-item">
+                Preço unt.
+        </label> 
+        <label class="input-edit-inventory-item input-edit-number-inventory-item">
+                Quantidade
+        </label>
+        <label class="input-edit-inventory-item input-edit-number-inventory-item">
+                Preço tot.
+        </label>
+        <div class="space-remove-list-inventory-item">                
+        </div>
+    </div>
+
+    <div class='inventory-item-container'>
+
+            <input type="hidden" formControlName="id" >
+
+            <select class="select-edit-inventory-item"  
+                    formControlName="inventoryItemId"
+            >                    
+                <option value={{inventoryItem.id}} *ngFor="let inventoryItem of inventoryItems">
+                    {{inventoryItem.name}}
+                </option>                                       
+            </select>          
+
+            <input type="number"
+                   class='input-edit-inventory-item input-edit-number-inventory-item'
+                   min="1"
+                   step="any"
+                   formControlName="unitPrice"                  
+            />
+
+            <input type="number"
+                    class='input-edit-inventory-item input-edit-number-inventory-item'
+                    min="1"
+                    step="any"
+                    formControlName="quantity"
+            />
+
+            <input type="number"
+                    class='input-edit-inventory-item input-edit-number-inventory-item'
+                    min="1"    
+                    step="any"
+                    formControlName="totalPrice"
+            />
+
+            <button class='button-remove-list-inventory-item' 
+                    [disabled]="disableItemsButtons"
+                    (click)="hideComponent($event)">
+                <mat-icon class="icon-size-inventory-item">delete</mat-icon>
+            </button>
+
+    </div>
+
+    <div class='inventory-item-container'>
+        <label *ngIf="unitPriceError" class="warning-edit">
+                {{unitPriceError}}
+        </label>
+        <label *ngIf="quantityError" class="warning-edit">
+                {{quantityError}}
+        </label>
+        <label *ngIf="totalPriceError" class="warning-edit">
+                {{totalPriceError}}
+        </label>
+    </div>
+
+</form>

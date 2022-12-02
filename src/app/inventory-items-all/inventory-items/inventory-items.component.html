@@ -1,0 +1,101 @@
+<p class="error-message" *ngIf="unitsError?.message">
+    {{unitsError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="unitsWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<form class="form-edit" *ngIf="isDependecyReady()" [formGroup]="inventoryItemForm" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" />
+
+    <label htmlFor="name">Nome:
+        <label *ngIf="nameError" class="warning-edit">
+            {{nameError}}
+        </label> 
+        <input type="text"
+               class="input-edit input-edit-text" 
+               formControlName="name"
+               required
+               minlength = "3"
+        />        
+    </label>
+
+    <div class='accordion-container'>
+        <button class="accordion-button" 
+                (click)="accordionClick($event)"            
+                >Section 1
+        </button>
+        <div class="accordion-panel" 
+            [style]="accordionPanelStyle"
+        >
+            <label>Marca:
+                <input type="text" 
+                    class="input-edit input-edit-text" 
+                    formControlName="brand"  
+                >
+            </label>
+        </div>
+    </div>
+
+    <label>Conteúdo:
+        <label *ngIf="contentError" class="warning-edit">
+            {{contentError}}
+        </label>
+        <input type="number" 
+               class="input-edit input-edit-number"
+               formControlName="content"  
+               min = "1"
+        />
+    </label>
+
+    <label>Unidade:
+        <label *ngIf="unitError" class="warning-edit">
+            {{unitError}}
+        </label>
+        <select formControlName="unityId"  
+                class="select-edit"
+                required
+                >
+            <option value="">
+                ...
+            </option>
+            <option value={{unit.id}} *ngFor="let unit of units">
+                {{unit.name}}
+            </option>
+        </select>
+    </label>
+
+    <label>Tipo:
+        <select formControlName="type"  
+                class="select-edit"
+                >
+            <option value={{1}}>
+                Receita
+            </option>
+            <option value={{2}}>
+                Revenda
+            </option>
+        </select>
+    </label>
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           *ngIf="newOrEdit"/>
+
+    <div *ngIf="!newOrEdit">
+        <div class="warning-edit">
+            Atenção! Esta ação não pode ser desfeita
+        </div>
+        <div class="clear-both">
+        </div>
+        <div>
+            <input type="submit" 
+                   class="input-edit-submit-remove"
+                   value="Remover" 
+            />
+        </div>
+    </div>
+    
+</form>
