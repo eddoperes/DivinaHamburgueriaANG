@@ -1,0 +1,42 @@
+<div>
+
+    <h1 class='h1-edit'>Login</h1>
+
+    <form (ngSubmit)="handleSubmit()" [formGroup]="loginForm" class="form-edit">
+
+      <label>E-mail
+        <label *ngIf="emailError" class="warning-edit">
+          {{emailError}}
+        </label>
+        <input type="text"
+              class='input-edit input-edit-text'
+              formControlName="email"
+              maxLength={20}         
+              required       
+          />
+      </label>
+
+      <label>Password
+        <label *ngIf="passwordError" class="warning-edit">
+          {{passwordError}}
+        </label>
+        <input type="password"
+              class='input-edit input-edit-text'
+              formControlName="password" 
+              maxLength={20}         
+              required        
+          />
+      </label>
+
+      <div>
+        <input type="submit" 
+              value="Enviar"
+              class="input-edit-submit"
+        />
+        <div class="clear-both">
+        </div>
+      </div>
+
+    </form>
+
+  </div>

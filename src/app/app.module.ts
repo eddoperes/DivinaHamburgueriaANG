@@ -20,7 +20,8 @@ import { PurchaseOrdersSearchComponent } from './purchase-orders-all/purchase-or
 import { PurchaseOrdersComponent } from './purchase-orders-all/purchase-orders/purchase-orders.component';
 import { PurchaseOrdersNewComponent } from './purchase-orders-all/purchase-orders-new/purchase-orders-new.component';
 import { PurchaseOrdersInventoryItemsComponent } from './purchase-orders-all/purchase-orders/purchase-orders-inventory-items/purchase-orders-inventory-items.component';
-import { PurchaseOrdersEditComponent } from './purchase-orders-all/purchase-orders-edit/purchase-orders-edit.component'
+import { PurchaseOrdersEditComponent } from './purchase-orders-all/purchase-orders-edit/purchase-orders-edit.component';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PurchaseOrdersEditComponent } from './purchase-orders-all/purchase-orde
     PurchaseOrdersComponent,
     PurchaseOrdersNewComponent,
     PurchaseOrdersInventoryItemsComponent,
-    PurchaseOrdersEditComponent
+    PurchaseOrdersEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

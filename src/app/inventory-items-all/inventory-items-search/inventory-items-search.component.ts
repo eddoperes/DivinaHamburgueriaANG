@@ -1,5 +1,6 @@
 //angular
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 //data
 import { Unit } from '../../module/unit';
@@ -50,7 +51,8 @@ export class InventoryItemsSearchComponent implements OnInit {
 
   constructor(private inventoryItemsService: InventoryItemsService,
               private unitsService: UnitsService,
-              private localStorageService : LocalStorageService) { }
+              private localStorageService : LocalStorageService,
+              private router: Router) { }
 
   ngOnInit(): void {
     
@@ -66,6 +68,9 @@ export class InventoryItemsSearchComponent implements OnInit {
                         this.unitsWaiting = false;
                       },
       error : (error) => {
+                          if (error.status === 401){
+                            this.router.navigateByUrl('login');
+                          }
                           this.unitsError = error;
                           this.unitsWaiting = false;
                          } 
@@ -145,6 +150,9 @@ export class InventoryItemsSearchComponent implements OnInit {
                         this.hasInventoryAnswer = true;
                       },
       error: (error) => {
+                          if (error.status === 401){
+                            this.router.navigateByUrl('login');
+                          }
                           this.inventoryItemsError = error;
                           this.inventoryItemsWaiting = false;
                           this.hasInventoryAnswer = true;

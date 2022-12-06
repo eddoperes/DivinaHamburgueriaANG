@@ -13,8 +13,25 @@ export class InventoryItemsService {
 
   constructor(private http: HttpClient) { }
   
+  private getToken(): string {
+    var storage = window.localStorage;
+    if (storage) {
+      var value = storage.getItem("token");
+      if (value === null)
+        return "";
+      else
+        return JSON.parse(value);
+    }
+    return "";
+  }
+
   public itensDoEstoque(): Observable<Array<InventoryItem>>{
-    return this.http.get<Array<InventoryItem>>(this.url)
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
+    }
+
+    return this.http.get<Array<InventoryItem>>(this.url, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
@@ -26,7 +43,12 @@ export class InventoryItemsService {
       name = "";
     if (type===null)
       type = "";
-    return this.http.get<Array<InventoryItem>>(`${this.url}/GetByNameAndOrType?name=${name}&type=${type}`)
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
+    }
+
+    return this.http.get<Array<InventoryItem>>(`${this.url}/GetByNameAndOrType?name=${name}&type=${type}`, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
@@ -34,7 +56,12 @@ export class InventoryItemsService {
   }
 
   public itensDoEstoqueById(id: string): Observable<InventoryItem>{
-    return this.http.get<InventoryItem>(`${this.url}/${id}`)
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
+    }
+
+    return this.http.get<InventoryItem>(`${this.url}/${id}`, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
@@ -44,7 +71,9 @@ export class InventoryItemsService {
   public itensDoEstoqueEdit(id: number, body: string): Observable<InventoryItem>{
 
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: new HttpHeaders()
+                   .set('content-type', 'application/json')
+                   .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
     return this.http.put<InventoryItem>(`${this.url}/${id}`, 
@@ -59,7 +88,9 @@ export class InventoryItemsService {
   public itensDoEstoqueNew(id: number, body: string): Observable<InventoryItem>{
 
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: new HttpHeaders()
+                   .set('content-type', 'application/json')
+                   .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
     return this.http.post<InventoryItem>(this.url, 
@@ -72,7 +103,12 @@ export class InventoryItemsService {
   }
 
   public itensDoEstoqueDelete(id: number): Observable<InventoryItem>{
-    return this.http.delete<InventoryItem>(`${this.url}/${id}`) 
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
+    }
+
+    return this.http.delete<InventoryItem>(`${this.url}/${id}`, httpOptions) 
                     .pipe(
                       res => res,
                       error => error,                      

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Unit } from '../module/unit';
@@ -13,8 +13,25 @@ export class UnitsService {
 
   constructor(private http: HttpClient) { }
 
+  private getToken(): string {
+    var storage = window.localStorage;
+    if (storage) {
+      var value = storage.getItem("token");
+      if (value === null)
+        return "";
+      else
+        return JSON.parse(value);
+    }
+    return "";
+  }
+
   public unidades(): Observable<Array<Unit>>{
-    return this.http.get<Array<Unit>>(this.url)
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
+    }
+
+    return this.http.get<Array<Unit>>(this.url, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      

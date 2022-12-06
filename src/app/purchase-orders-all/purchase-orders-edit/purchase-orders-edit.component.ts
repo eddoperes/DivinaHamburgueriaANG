@@ -43,6 +43,9 @@ export class PurchaseOrdersEditComponent implements OnInit {
         this.purchaseOrderWaiting = false;
       },
       error: (error) => {
+          if (error.status === 401){
+            this.router.navigateByUrl('login');
+          }
           this.purchaseOrderError = error;
           this.purchaseOrderWaiting = false;
         },
@@ -60,7 +63,12 @@ export class PurchaseOrdersEditComponent implements OnInit {
         .purchaseOrdersPatch(id, item)    
         .subscribe({
           next: (res) => {this.router.navigateByUrl('purchaseorders')},
-          error: (error) => { console.log(error) }
+          error: (error) => { 
+                              if (error.status === 401){
+                                this.router.navigateByUrl('login');
+                              }
+                              console.log(error) 
+                            }
         });                  
 
   }

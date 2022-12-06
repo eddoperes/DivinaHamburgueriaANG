@@ -1,4 +1,5 @@
 //angular
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 //data
@@ -40,7 +41,8 @@ export class PurchaseOrdersSearchComponent implements OnInit {
 
   constructor(private purchaseOrdersService: PurchaseOrdersService,
               private providersService: ProvidersService,
-              private localStorageService: LocalStorageService) { }
+              private localStorageService: LocalStorageService,
+              private router: Router) { }
 
   ngOnInit(): void {
 
@@ -56,6 +58,9 @@ export class PurchaseOrdersSearchComponent implements OnInit {
                         this.providersWaiting = false;
                       },
       error : (error) => {
+                          if (error.status === 401){
+                            this.router.navigateByUrl('login');
+                          }
                           this.providersError = error;
                           this.providersWaiting = false;
                          } 
@@ -133,6 +138,9 @@ export class PurchaseOrdersSearchComponent implements OnInit {
                         this.hasPurchaseOrdersAnswer = true;
                      },
       error: (error) => {
+                          if (error.status === 401){
+                            this.router.navigateByUrl('login');
+                          }
                           this.purchaseOrdersError = error;
                           this.purchaseOrdersWaiting = false;
                           this.hasPurchaseOrdersAnswer = true;
