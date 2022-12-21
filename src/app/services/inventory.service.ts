@@ -1,16 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { InventoryItem } from '../module/inventoryItem';
+import { Inventory } from '../module/inventory';
 import { environment } from 'src/environments/environment';
-import { Eatable } from '../module/eatable';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InventoryItemsService {
+export class InventoryService {
 
-  private url: string = `${environment.url}/inventoryitems`;
+  private url: string = `${environment.url}/inventories`;
 
   constructor(private http: HttpClient) { }
   
@@ -26,63 +25,46 @@ export class InventoryItemsService {
     return "";
   }
 
-  public itensDoEstoque(): Observable<Array<InventoryItem>>{
+  public inventories(): Observable<Array<Inventory>>{
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
 
-    return this.http.get<Array<InventoryItem>>(this.url, httpOptions)
+    return this.http.get<Array<Inventory>>(this.url, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
                     );                  
   }
 
-  public itensDoEstoqueByNameAndOrType(name: string, type: string): Observable<Array<InventoryItem>>{
-    if (name===null)
-      name = "";
-    if (type===null)
-      type = "";
+  public inventoriesByEatable(eatableId: string): Observable<Array<Inventory>>{
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
 
-    return this.http.get<Array<InventoryItem>>(`${this.url}/GetByNameAndOrType?name=${name}&type=${type}`, httpOptions)
+    return this.http.get<Array<Inventory>>(`${this.url}/GetByEatable?eatableId=${eatableId}`, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
                     );                  
   }
 
-  public distinctNames(): Observable<Array<Eatable>>{
+  public inventoriesById(id: string): Observable<Inventory>{
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
 
-    return this.http.get<Array<Eatable>>(`${this.url}/GetDistinctNames`, httpOptions)
+    return this.http.get<Inventory>(`${this.url}/${id}`, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
                     );                  
   }
 
-  public itensDoEstoqueById(id: string): Observable<InventoryItem>{
-
-    const httpOptions = {
-      headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
-    }
-
-    return this.http.get<InventoryItem>(`${this.url}/${id}`, httpOptions)
-                    .pipe(
-                      res => res,
-                      error => error,                      
-                    );                  
-  }
-
-  public itensDoEstoqueEdit(id: number, body: string): Observable<InventoryItem>{
+  public inventoriesEdit(id: number, body: string): Observable<Inventory>{
 
     const httpOptions = {
       headers: new HttpHeaders()
@@ -90,7 +72,7 @@ export class InventoryItemsService {
                    .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
-    return this.http.put<InventoryItem>(`${this.url}/${id}`, 
+    return this.http.put<Inventory>(`${this.url}/${id}`, 
                                          body, 
                                          httpOptions) 
                     .pipe(
@@ -99,7 +81,7 @@ export class InventoryItemsService {
                     );       
   }
 
-  public itensDoEstoqueNew(id: number, body: string): Observable<InventoryItem>{
+  public inventoriesNew(id: number, body: string): Observable<Inventory>{
 
     const httpOptions = {
       headers: new HttpHeaders()
@@ -107,7 +89,7 @@ export class InventoryItemsService {
                    .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
-    return this.http.post<InventoryItem>(this.url, 
+    return this.http.post<Inventory>(this.url, 
                                          body, 
                                          httpOptions) 
                     .pipe(
@@ -116,13 +98,13 @@ export class InventoryItemsService {
                     );       
   }
 
-  public itensDoEstoqueDelete(id: number): Observable<InventoryItem>{
+  public inventoriesDelete(id: number): Observable<Inventory>{
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
 
-    return this.http.delete<InventoryItem>(`${this.url}/${id}`, httpOptions) 
+    return this.http.delete<Inventory>(`${this.url}/${id}`, httpOptions) 
                     .pipe(
                       res => res,
                       error => error,                      

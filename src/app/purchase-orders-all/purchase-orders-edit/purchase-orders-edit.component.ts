@@ -37,7 +37,7 @@ export class PurchaseOrdersEditComponent implements OnInit {
         this.purchaseOrderFetch = true;
         this.formComponent!.populateData(res);
         var configure : any = {
-          disableInputs: true,
+          disableInputs: false,
         }
         this.formComponent!.populateConfig(configure);
         this.purchaseOrderWaiting = false;
@@ -60,7 +60,7 @@ export class PurchaseOrdersEditComponent implements OnInit {
   public sendData(id: number, item: any):void{
   
     this.purchaseOrdersService
-        .purchaseOrdersPatch(id, item)    
+        .purchaseOrdersEdit(id, item)    
         .subscribe({
           next: (res) => {this.router.navigateByUrl('purchaseorders')},
           error: (error) => { 

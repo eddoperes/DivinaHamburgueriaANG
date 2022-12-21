@@ -9,7 +9,7 @@ import { InventoryItem } from '../../module/inventoryItem';
 import { InventoryItemsService } from 'src/app/services/inventoryitems.service';
 
 //search
-import { InventoryFilter } from 'src/app/module/inventoryFilter';
+import { InventoryItemFilter } from 'src/app/module/inventoryItemFilter';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
@@ -19,7 +19,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class InventoryItemsSearchComponent implements OnInit {
 
-  public filter: InventoryFilter = {
+  public filter: InventoryItemFilter = {
     name: '',
     nameDisabled: false,
     type: '1',

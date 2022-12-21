@@ -30,7 +30,7 @@
         <a [routerLink]="['/inventoryitems']">Itens do estoque</a>
         <a [routerLink]="['/purchaseorders']">Pedidos compra</a>
         <hr />
-        <a>Estoques</a>
+        <a [routerLink]="['/inventories']">Estoques</a>
       </div>        
     </div> 
 
@@ -44,9 +44,14 @@
       </div>        
     </div> 
     
-    <a [routerLink]="['/login']">
+    <a [routerLink]="['/login']" *ngIf="!hasToken()">
       <mat-icon>supervisor_account</mat-icon>
       Login
+    </a>
+
+    <a [routerLink]="['/']" *ngIf="hasToken()" (click)="handleLogout()">
+      <mat-icon>supervisor_account</mat-icon>
+      Sair
     </a>
 
   </div>    

@@ -19,6 +19,9 @@ export class LoginComponent implements OnInit {
     password: ""
   });
 
+  public loginError: any = null;
+  public loginWaiting: boolean = false;
+
   public emailError : string = "";
   public passwordError : string = "";
 
@@ -34,13 +37,22 @@ export class LoginComponent implements OnInit {
     this.emailError = "";
     this.passwordError = "";
     if (this.loginForm.valid) {  
+      setTimeout(() => {
+        if (this.loginError === null){
+          this.loginWaiting = true;  
+        }        
+      }, 1000);
       this.loginService.login(this.loginForm.value)
       .subscribe({
         next: (res) => { 
                           this.localStorageService.set("token", res.token); 
-                          this.router.navigateByUrl('');
-                      },
-        error: (error) => { console.log(error) }
+                          this.loginWaiting = false;
+                          this.router.navigateByUrl('');                          
+                       },
+        error: (error) => { 
+                            this.loginError = error; 
+                            this.loginWaiting = false;
+                          }
       });         
     }
     else {

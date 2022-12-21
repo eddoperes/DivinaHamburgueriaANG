@@ -31,15 +31,23 @@ export class PurchaseOrdersInventoryItemsComponent implements OnInit {
   public newOrEdit: boolean = true;
   public disableItemsButtons = false;
 
+  public deleted: boolean = false;
+
   public getSubForm (){
-    return this.purchaseOrderInventoryItemsForm;
+    if (this.deleted)
+      return null;
+    else
+      return this.purchaseOrderInventoryItemsForm;
   } 
 
   public hideComponent(event: any){
+    this.deleted = true;
+    /*
     if (event.target.parentElement !== undefined)
       event.target.parentElement.style.display = "none";
     if(event.target.parentElement.parentElement !== undefined)
       event.target.parentElement.parentElement.style.display = "none";
+    */
   }
 
   public isDependecyReady() : boolean{
