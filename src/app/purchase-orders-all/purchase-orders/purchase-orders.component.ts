@@ -1,4 +1,5 @@
 //angular
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit, Input, ViewChild, ViewContainerRef } from '@angular/core';
 
@@ -50,7 +51,8 @@ export class PurchaseOrdersComponent implements OnInit {
 
   constructor(private providersService: ProvidersService,
               private inventoryItemsService: InventoryItemsService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private router: Router) { }
 
   ngOnInit(): void {
 
@@ -68,6 +70,9 @@ export class PurchaseOrdersComponent implements OnInit {
                         this.providersWaiting = false;
                       },
       error : (error) => {
+                          if (error.status === 401){
+                            this.router.navigateByUrl('login');
+                          }
                           this.providersError = error;
                           this.providersWaiting = false;
                          } 
@@ -85,6 +90,9 @@ export class PurchaseOrdersComponent implements OnInit {
                         this.inventoryItemsWaiting = false;
                       },
       error : (error) => {
+                          if (error.status === 401){
+                            this.router.navigateByUrl('login');
+                          }
                           this.inventoryItemsError = error;
                           this.inventoryItemsWaiting = false;
                          } 
@@ -175,22 +183,24 @@ export class PurchaseOrdersComponent implements OnInit {
     }
 
     for(var i=0; i < this.inventoryItemsInstances.length; i++){ 
-      var subForm = this.inventoryItemsInstances[i].getSubForm();    
-      if (subForm.valid){
-        this.inventoryItemsInstances[i].unitPriceError = "";
-        this.inventoryItemsInstances[i].quantityError = "";
-        this.inventoryItemsInstances[i].totalPriceError = "";
-      } else {
-        if (subForm.get('unitPrice')?.errors?.['min'] !== undefined){
-          this.inventoryItemsInstances[i].unitPriceError = "* o preço unitário mínimo é 1.";
-        }  
-        if (subForm.get('quantity')?.errors?.['min'] !== undefined){
-          this.inventoryItemsInstances[i].quantityError = "* a quantidade mínima é 1.";
-        }  
-        if (subForm.get('totalPrice')?.errors?.['min'] !== undefined){
-          this.inventoryItemsInstances[i].totalPriceError = "* a preço total mínimo é 1.";
-        }  
-        isValid = false;
+      var subForm = this.inventoryItemsInstances[i].getSubForm();  
+      if (subForm !== null){  
+        if (subForm.valid){
+          this.inventoryItemsInstances[i].unitPriceError = "";
+          this.inventoryItemsInstances[i].quantityError = "";
+          this.inventoryItemsInstances[i].totalPriceError = "";
+        } else {
+          if (subForm.get('unitPrice')?.errors?.['min'] !== undefined){
+            this.inventoryItemsInstances[i].unitPriceError = "* o preço unitário mínimo é 1.";
+          }  
+          if (subForm.get('quantity')?.errors?.['min'] !== undefined){
+            this.inventoryItemsInstances[i].quantityError = "* a quantidade mínima é 1.";
+          }  
+          if (subForm.get('totalPrice')?.errors?.['min'] !== undefined){
+            this.inventoryItemsInstances[i].totalPriceError = "* a preço total mínimo é 1.";
+          }  
+          isValid = false;
+        }
       }        
     }
     
@@ -202,8 +212,11 @@ export class PurchaseOrdersComponent implements OnInit {
     purchaseOrder.purchaseOrderInventoryItems = [];    
     for(var i=0; i < this.inventoryItemsInstances.length; i++){
       var subForm = this.inventoryItemsInstances[i].getSubForm(); 
-      purchaseOrder.purchaseOrderInventoryItems.push(subForm.value);
+      if (subForm !== null)
+        purchaseOrder.purchaseOrderInventoryItems.push(subForm.value);
     }    
+
+    //console.log(purchaseOrder);
 
     this.sendData(this.purchaseOrderForm.controls['id'].value, 
                   purchaseOrder);

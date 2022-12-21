@@ -20,7 +20,12 @@ import { PurchaseOrdersSearchComponent } from './purchase-orders-all/purchase-or
 import { PurchaseOrdersComponent } from './purchase-orders-all/purchase-orders/purchase-orders.component';
 import { PurchaseOrdersNewComponent } from './purchase-orders-all/purchase-orders-new/purchase-orders-new.component';
 import { PurchaseOrdersInventoryItemsComponent } from './purchase-orders-all/purchase-orders/purchase-orders-inventory-items/purchase-orders-inventory-items.component';
-import { PurchaseOrdersEditComponent } from './purchase-orders-all/purchase-orders-edit/purchase-orders-edit.component'
+import { PurchaseOrdersEditComponent } from './purchase-orders-all/purchase-orders-edit/purchase-orders-edit.component';
+import { LoginComponent } from './login/login.component';
+import { InventoryComponent } from './inventory-all/inventory/inventory.component';
+import { InventoryEditComponent } from './inventory-all/inventory-edit/inventory-edit.component';
+import { InventorySearchComponent } from './inventory-all/inventory-search/inventory-search.component';
+import { MessageboxComponent } from './messagebox/messagebox.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,12 @@ import { PurchaseOrdersEditComponent } from './purchase-orders-all/purchase-orde
     PurchaseOrdersComponent,
     PurchaseOrdersNewComponent,
     PurchaseOrdersInventoryItemsComponent,
-    PurchaseOrdersEditComponent
+    PurchaseOrdersEditComponent,
+    LoginComponent,
+    InventoryComponent,
+    InventoryEditComponent,
+    InventorySearchComponent,
+    MessageboxComponent
   ],
   imports: [
     BrowserModule,

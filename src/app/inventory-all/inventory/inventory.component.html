@@ -1,0 +1,46 @@
+<p class="error-message" *ngIf="inventoryItemsError?.message">
+    {{inventoryItemsError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="inventoryItemsWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<form class="form-edit" *ngIf="isDependecyReady()" [formGroup]="inventoryForm" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" />
+
+    <label>Item do estoque:
+        <label *ngIf="inventoryItemError" class="warning-edit">
+            {{inventoryItemError}}
+        </label>
+        <select formControlName="inventoryItemId"  
+                class="select-edit"
+                required
+                >
+            <option value="">
+                ...
+            </option>
+            <option value={{inventoryItem.id}} *ngFor="let inventoryItem of inventoryItems">
+                {{inventoryItem.name}}
+            </option>
+        </select>
+    </label>
+
+    <label>Quantidade:
+        <label *ngIf="quantityError" class="warning-edit">
+            {{quantityError}}
+        </label>
+        <input type="number" 
+               class="input-edit input-edit-number"
+               formControlName="quantity"  
+               min = "1"
+        />
+    </label>
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           *ngIf="newOrEdit"/>
+
+</form>
+

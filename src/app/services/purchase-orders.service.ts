@@ -13,8 +13,23 @@ export class PurchaseOrdersService {
 
   constructor(private http: HttpClient) { }
 
+  private getToken(): string {
+    var storage = window.localStorage;
+    if (storage) {
+      var value = storage.getItem("token");
+      if (value === null)
+        return "";
+      else
+        return JSON.parse(value);
+    }
+    return "";
+  }
+
   public purchaseOrders(): Observable<Array<PurchaseOrder>>{
-    return this.http.get<Array<PurchaseOrder>>(this.url)
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
+    }
+    return this.http.get<Array<PurchaseOrder>>(this.url, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
@@ -24,7 +39,10 @@ export class PurchaseOrdersService {
   public purchaseOrdersByProvider(providerId: number): Observable<Array<PurchaseOrder>>{
     if (providerId===null || providerId === undefined)
       providerId = 0;
-    return this.http.get<Array<PurchaseOrder>>(`${this.url}/GetByProvider?providerid=${providerId}`)
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
+    }
+    return this.http.get<Array<PurchaseOrder>>(`${this.url}/GetByProvider?providerid=${providerId}`, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
@@ -32,7 +50,10 @@ export class PurchaseOrdersService {
   }
 
   public purchaseOrdersById(id: string): Observable<PurchaseOrder>{
-    return this.http.get<PurchaseOrder>(`${this.url}/${id}`)
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
+    }
+    return this.http.get<PurchaseOrder>(`${this.url}/${id}`, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
@@ -42,7 +63,9 @@ export class PurchaseOrdersService {
   public purchaseOrdersEdit(id: number, body: string): Observable<PurchaseOrder>{
 
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: new HttpHeaders()
+                   .set('content-type', 'application/json')
+                   .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
     return this.http.put<PurchaseOrder>(`${this.url}/${id}`, 
@@ -57,7 +80,9 @@ export class PurchaseOrdersService {
   public purchaseOrdersPatch(id: number, body: string): Observable<PurchaseOrder>{
 
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: new HttpHeaders()
+                   .set('content-type', 'application/json')
+                   .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
     return this.http.patch<PurchaseOrder>(`${this.url}/${id}`, 
@@ -72,7 +97,9 @@ export class PurchaseOrdersService {
   public purchaseOrdersNew(id: number, body: string): Observable<PurchaseOrder>{
 
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: new HttpHeaders()
+                   .set('content-type', 'application/json')
+                   .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
     return this.http.post<PurchaseOrder>(this.url, 
@@ -85,7 +112,10 @@ export class PurchaseOrdersService {
   }
 
   public purchaseOrdersDelete(id: number): Observable<PurchaseOrder>{
-    return this.http.delete<PurchaseOrder>(`${this.url}/${id}`) 
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
+    }
+    return this.http.delete<PurchaseOrder>(`${this.url}/${id}`, httpOptions) 
                     .pipe(
                       res => res,
                       error => error,                      

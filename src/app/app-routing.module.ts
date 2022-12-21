@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 import { InventoryItemsNewComponent } from './inventory-items-all/inventory-items-new/inventory-items-new.component';
 import { InventoryItemsEditComponent } from './inventory-items-all/inventory-items-edit/inventory-items-edit.component';
@@ -12,8 +13,12 @@ import { PurchaseOrdersNewComponent } from './purchase-orders-all/purchase-order
 import { PurchaseOrdersEditComponent } from './purchase-orders-all/purchase-orders-edit/purchase-orders-edit.component';
 import { PurchaseOrdersSearchComponent } from './purchase-orders-all/purchase-orders-search/purchase-orders-search.component';
 
+import { InventoryEditComponent } from './inventory-all/inventory-edit/inventory-edit.component';
+import { InventorySearchComponent } from './inventory-all/inventory-search/inventory-search.component';
+
 const routes: Routes = [  
   { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'inventoryitems', component: InventoryItemsSearchComponent },
   { path: 'inventoryitems/new', component: InventoryItemsNewComponent },
   { path: 'inventoryitems/edit/:id', component: InventoryItemsEditComponent },
@@ -21,6 +26,9 @@ const routes: Routes = [
   { path: 'purchaseorders', component: PurchaseOrdersSearchComponent },
   { path: 'purchaseorders/new', component: PurchaseOrdersNewComponent },
   { path: 'purchaseorders/edit/:id', component: PurchaseOrdersEditComponent },
+  
+  { path: 'inventories', component: InventorySearchComponent },  
+  { path: 'inventories/edit/:id', component: InventoryEditComponent },
 ];
 
 @NgModule({

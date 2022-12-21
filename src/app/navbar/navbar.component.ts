@@ -1,4 +1,8 @@
+//angular
 import { Component, OnInit } from '@angular/core';
+
+//data
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localStorageService: LocalStorageService) { }
+
+  public hasToken(){
+    var token = this.localStorageService.get("token");
+    if (token !== "")
+      return true;
+    else
+      return false;
+  }
+
+  public handleLogout(){
+    this.localStorageService.set("token","")
+  }
 
   ngOnInit(): void {
   }

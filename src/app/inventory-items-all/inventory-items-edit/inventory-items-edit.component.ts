@@ -49,6 +49,9 @@ export class InventoryItemsEditComponent implements OnInit {
         this.inventoryItemWaiting = false;
       },
       error: (error) => {
+          if (error.status === 401){
+            this.router.navigateByUrl('login');
+          }
           this.inventoryItemError = error;
           this.inventoryItemWaiting = false;
         },
@@ -66,7 +69,12 @@ export class InventoryItemsEditComponent implements OnInit {
         .itensDoEstoqueEdit(id, form.value)    
         .subscribe({
           next: (res) => {this.router.navigateByUrl('inventoryitems')},
-          error: (error) => { console.log(error) }
+          error: (error) => { 
+                              if (error.status === 401){
+                                this.router.navigateByUrl('login');
+                              }
+                              console.log(error) 
+                            }
         });                  
 
   }

@@ -1,0 +1,17 @@
+<div *ngIf="visible">
+
+    <div class='box' [style]="messageBoxStyle">
+        <div class='message'>
+            <span>{{message}}</span>    
+        </div>          
+        <div>
+            <button class='button' (click)="handleYes($event)">
+                Sim
+            </button>
+            <button class='button' (click)="handleNo($event)">
+                Não
+            </button>
+        </div>
+    </div>    
+
+</div>

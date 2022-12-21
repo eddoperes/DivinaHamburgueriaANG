@@ -1,4 +1,5 @@
 //angular
+import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -38,6 +39,7 @@ export class InventoryItemsComponent implements OnInit {
   public accordionPanelStyle: string = '';
 
   constructor(private unitsService: UnitsService,
+              private router: Router,
               private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -56,6 +58,9 @@ export class InventoryItemsComponent implements OnInit {
                         this.unitsWaiting = false;
                       },
       error : (error) => {
+                          if (error.status === 401){
+                            this.router.navigateByUrl('login');
+                          }
                           this.unitsError = error;
                           this.unitsWaiting = false;
                          } 

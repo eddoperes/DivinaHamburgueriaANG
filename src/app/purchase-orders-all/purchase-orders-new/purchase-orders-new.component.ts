@@ -37,7 +37,12 @@ export class PurchaseOrdersNewComponent implements OnInit {
         .purchaseOrdersNew(id, item)    
         .subscribe({
           next: (res) => {this.router.navigateByUrl('purchaseorders')},
-          error: (error) => { console.log(error) }
+          error: (error) => { 
+                              if (error.status === 401){
+                                this.router.navigateByUrl('login');
+                              }
+                              console.log(error) 
+                            }
         });                  
 
   }
