@@ -16,19 +16,42 @@ import { PurchaseOrdersSearchComponent } from './purchase-orders-all/purchase-or
 import { InventoryEditComponent } from './inventory-all/inventory-edit/inventory-edit.component';
 import { InventorySearchComponent } from './inventory-all/inventory-search/inventory-search.component';
 
+import { MenuItemsResaleNewComponent } from './menu-items-resale-all/menu-items-resale-new/menu-items-resale-new.component';
+import { MenuItemsResaleEditComponent } from './menu-items-resale-all/menu-items-resale-edit/menu-items-resale-edit.component';
+import { MenuItemsResaleRemoveComponent } from './menu-items-resale-all/menu-items-resale-remove/menu-items-resale-remove.component';
+import { MenuItemsResaleSearchComponent } from './menu-items-resale-all/menu-items-resale-search/menu-items-resale-search.component';
+
+import { MenuItemsRecipeNewComponent } from './menu-items-recipe-all/menu-items-recipe-new/menu-items-recipe-new.component';
+import { MenuItemsRecipeEditComponent } from './menu-items-recipe-all/menu-items-recipe-edit/menu-items-recipe-edit.component';
+import { MenuItemsRecipeRemoveComponent } from './menu-items-recipe-all/menu-items-recipe-remove/menu-items-recipe-remove.component';
+import { MenuItemsRecipeSearchComponent } from './menu-items-recipe-all/menu-items-recipe-search/menu-items-recipe-search.component';
+
 const routes: Routes = [  
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  
   { path: 'inventoryitems', component: InventoryItemsSearchComponent },
   { path: 'inventoryitems/new', component: InventoryItemsNewComponent },
   { path: 'inventoryitems/edit/:id', component: InventoryItemsEditComponent },
   { path: 'inventoryitems/remove/:id', component: InventoryItemsRemoveComponent },
+
   { path: 'purchaseorders', component: PurchaseOrdersSearchComponent },
   { path: 'purchaseorders/new', component: PurchaseOrdersNewComponent },
   { path: 'purchaseorders/edit/:id', component: PurchaseOrdersEditComponent },
   
   { path: 'inventories', component: InventorySearchComponent },  
   { path: 'inventories/edit/:id', component: InventoryEditComponent },
+
+  { path: 'menuitemsresale', component: MenuItemsResaleSearchComponent },
+  { path: 'menuitemsresale/new', component: MenuItemsResaleNewComponent },
+  { path: 'menuitemsresale/edit/:id', component: MenuItemsResaleEditComponent },
+  { path: 'menuitemsresale/remove/:id', component: MenuItemsResaleRemoveComponent },
+
+  { path: 'menuitemsrecipe', component: MenuItemsRecipeSearchComponent },
+  { path: 'menuitemsrecipe/new', component: MenuItemsRecipeNewComponent },
+  { path: 'menuitemsrecipe/edit/:id', component: MenuItemsRecipeEditComponent },
+  { path: 'menuitemsrecipe/remove/:id', component: MenuItemsRecipeRemoveComponent },
+
 ];
 
 @NgModule({

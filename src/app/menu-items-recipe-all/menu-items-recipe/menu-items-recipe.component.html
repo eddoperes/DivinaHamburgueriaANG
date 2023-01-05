@@ -1,0 +1,94 @@
+
+<p class="error-message" *ngIf="eatablesError?.message">
+    {{eatablesError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="eatablesWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<p class="error-message" *ngIf="unitsError?.message">
+    {{unitsError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="unitsWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<form class="form-edit" *ngIf="isDependecyReady()" [formGroup]="menuItemRecipeForm" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" />
+
+    <label htmlFor="name">Nome:
+        <label *ngIf="nameError" class="warning-edit">
+            {{nameError}}
+        </label> 
+        <input type="text"
+               class="input-edit input-edit-text" 
+               formControlName="name"
+               required
+               minlength = "3"
+        />        
+    </label>
+
+    <label>Descrição:
+        <label *ngIf="descriptionError" class="warning-edit">
+            {{descriptionError}}
+        </label>
+        <input type="text" 
+               class="input-edit input-edit-text" 
+               formControlName="description"  
+               required
+        >
+    </label>
+
+    <label>Foto:
+        <label *ngIf="photoError" class="warning-edit">
+            {{photoError}}
+        </label>
+        <input type="text" 
+               class="input-edit input-edit-text" 
+               formControlName="photo"  
+               required
+        >
+    </label>
+
+    <div class='accordion-container'>
+        <button class="accordion-button" (click)="AccordionClick($event)">
+          Itens
+        </button>
+        <div class="accordion-panel"
+            [style]="accordionPanelStyle"
+        >
+
+            <div #ingredientsContainer>                
+            </div>
+            
+            <button (click)="newItem($event)"                  
+                    class="input-edit-submit"
+                    [disabled]="disableItemsButtons"
+            >Adicionar</button>
+            <div class="clear-both">                
+            </div>
+
+        </div>
+    </div>
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           *ngIf="newOrEdit"/>
+
+    <div *ngIf="!newOrEdit">
+        <div class="warning-edit">
+            Atenção! Esta ação não pode ser desfeita
+        </div>
+        <div class="clear-both">
+        </div>
+        <div>
+            <input type="submit" 
+                   class="input-edit-submit-remove"
+                   value="Remover" 
+            />
+        </div>
+    </div>
+    
+</form>

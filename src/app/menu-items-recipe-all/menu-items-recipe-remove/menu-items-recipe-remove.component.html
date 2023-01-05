@@ -1,0 +1,14 @@
+<h1 class="h1-edit">Remover item do cardápio receita</h1>
+
+<p class="error-message-edit" *ngIf="menuItemRecipeError?.message">
+    {{menuItemRecipeError.message}}
+</p>  
+
+<p class="waiting-icon-edit" *ngIf="menuItemRecipeWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<app-menu-items-recipe [sendData]="sendDataFunctionPointer"
+                       [setFormComponent]="setFormComponentFunctionPointer"
+></app-menu-items-recipe>
+

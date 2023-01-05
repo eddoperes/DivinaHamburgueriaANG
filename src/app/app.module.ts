@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InventoryItemsComponent } from './inventory-items-all/inventory-items/inventory-items.component';
@@ -26,6 +26,17 @@ import { InventoryComponent } from './inventory-all/inventory/inventory.componen
 import { InventoryEditComponent } from './inventory-all/inventory-edit/inventory-edit.component';
 import { InventorySearchComponent } from './inventory-all/inventory-search/inventory-search.component';
 import { MessageboxComponent } from './messagebox/messagebox.component';
+import { MenuItemsResaleComponent } from './menu-items-resale-all/menu-items-resale/menu-items-resale.component';
+import { MenuItemsResaleSearchComponent } from './menu-items-resale-all/menu-items-resale-search/menu-items-resale-search.component';
+import { MenuItemsResaleEditComponent } from './menu-items-resale-all/menu-items-resale-edit/menu-items-resale-edit.component';
+import { MenuItemsResaleNewComponent } from './menu-items-resale-all/menu-items-resale-new/menu-items-resale-new.component';
+import { MenuItemsResaleRemoveComponent } from './menu-items-resale-all/menu-items-resale-remove/menu-items-resale-remove.component';
+import { MenuItemsRecipeSearchComponent } from './menu-items-recipe-all/menu-items-recipe-search/menu-items-recipe-search.component';
+import { MenuItemsRecipeEditComponent } from './menu-items-recipe-all/menu-items-recipe-edit/menu-items-recipe-edit.component';
+import { MenuItemsRecipeNewComponent } from './menu-items-recipe-all/menu-items-recipe-new/menu-items-recipe-new.component';
+import { MenuItemsRecipeRemoveComponent } from './menu-items-recipe-all/menu-items-recipe-remove/menu-items-recipe-remove.component';
+import { MenuItemsRecipeComponent } from './menu-items-recipe-all/menu-items-recipe/menu-items-recipe.component';
+import { IngredientsComponent } from './menu-items-recipe-all/menu-items-recipe/ingredients/ingredients.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +57,18 @@ import { MessageboxComponent } from './messagebox/messagebox.component';
     InventoryComponent,
     InventoryEditComponent,
     InventorySearchComponent,
-    MessageboxComponent
+    MessageboxComponent,
+    MenuItemsResaleComponent,
+    MenuItemsResaleSearchComponent,
+    MenuItemsResaleEditComponent,
+    MenuItemsResaleNewComponent,
+    MenuItemsResaleRemoveComponent,
+    MenuItemsRecipeSearchComponent,
+    MenuItemsRecipeEditComponent,
+    MenuItemsRecipeNewComponent,
+    MenuItemsRecipeRemoveComponent,
+    MenuItemsRecipeComponent,
+    IngredientsComponent,
   ],
   imports: [
     BrowserModule,

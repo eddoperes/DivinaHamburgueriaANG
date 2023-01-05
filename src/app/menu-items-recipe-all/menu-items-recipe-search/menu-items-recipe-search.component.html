@@ -1,0 +1,101 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<h1 class="h1-list">
+    Itens do cardápio receita
+</h1>    
+
+<form class="form-list" #form="ngForm" (ngSubmit)="handleSubmit(form)">
+
+    <div class="main-filter">
+
+        <div class="left-filter">
+
+            <label>
+                <input type="radio"                     
+                       class="input-list"                     
+                       id="name" 
+                       name="name"        
+                       [checked]="!filter.nameDisabled"            
+                       (change)="nameSpecificChange($event)"/>
+                Nome
+            </label>
+
+            <input type="text"
+                   [(ngModel)]="filter.name"
+                   #name="ngModel"     
+                   name="name"     
+                   disabled={{filter.nameDisabled}}       
+                   class="input-list input-list-text"               
+            />
+        </div>
+
+        <div className="right-filter">
+            <label>
+                <input type="radio" 
+                    class="input-list"                 
+                    id="name" 
+                    name="name" 
+                    [checked]="filter.nameDisabled"
+                    (change)="nameAnyChange($event)"
+                    value="*"  />
+                Qualquer
+            </label>
+        </div>
+
+    </div>
+
+    <div>
+        <input type="submit" 
+            class="input-list-submit" 
+            value="Pesquisar" />                            
+    </div> 
+    <div class='clear-both'>
+    </div> 
+
+</form>
+
+<div class="button-new-list-container">
+    <a [routerLink]="['/menuitemsrecipe/new']"  >
+        <button class='button-new-list'>
+            <mat-icon>add_to_photos</mat-icon>
+        </button>                
+    </a>    
+</div>
+
+<p class="error-message" *ngIf="menuItemsRecipeError?.message">
+    {{menuItemsRecipeError.message}}
+</p>  
+
+<p class="waiting-icon" *ngIf="menuItemsRecipeWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<div class="card-container">
+
+    <div *ngFor="let item of menuItemsRecipe" >
+
+        <div class='card'>
+            <div>
+                {{item.name}}
+            </div>
+            <div>
+                {{item.description}}
+            </div> 
+            <div>
+                <a [routerLink]="['/menuitemsrecipe/edit', item.id]"  >
+                    <button class='button-edit-list'>
+                        <mat-icon>edit</mat-icon>
+                    </button>                       
+                </a>
+                <a [routerLink]="['/menuitemsrecipe/remove', item.id]"  >
+                    <button class='button-remove-list'>
+                        <mat-icon>delete</mat-icon>
+                    </button>                       
+                </a>                                                                                
+            </div>                    
+        </div>
+
+    </div>
+
+</div>
+

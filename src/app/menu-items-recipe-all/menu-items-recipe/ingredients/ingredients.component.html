@@ -1,0 +1,66 @@
+<link href="ingredients.component.scss" rel="stylesheet">
+
+<form *ngIf="isDependecyReady()" [formGroup]="ingredientsForm" >
+
+    <div *ngIf="number === 0" class='ingredient-container'>
+        <label class="select-edit-ingredient">
+                Comestível
+        </label>   
+        <label class="input-edit-ingredient input-edit-number-ingredient">
+                Quantidade
+        </label> 
+        <label class="input-edit-ingredient input-edit-number-ingredient">
+                Unidade
+        </label>
+        <div class="space-remove-list-ingredient">                
+        </div>
+    </div>
+
+    <div class='ingredient-container' *ngIf="!deleted">
+
+            <input type="hidden" formControlName="id" >
+
+            <select class="select-edit-ingredient"  
+                    formControlName="eatableId"
+            >                    
+                <option value={{eatable.id}} *ngFor="let eatable of eatables">
+                    {{eatable.name}}
+                </option>                                       
+            </select>          
+
+            <input type="number"
+                    class='input-edit-ingredient input-edit-number-ingredient'
+                    min="1"
+                    step="any"
+                    formControlName="quantity"
+            />
+
+            <select class="select-edit-ingredient"  
+                    formControlName="unityId"
+            >                    
+                <option value={{unit.id}} *ngFor="let unit of units">
+                    {{unit.name}}
+                </option>                                       
+            </select> 
+
+            <button class='button-remove-list-ingredient' 
+                    [disabled]="disableItemsButtons"
+                    (click)="hideComponent($event)">
+                <mat-icon class="icon-size-ingredient">delete</mat-icon>
+            </button>
+
+    </div>
+
+    <div class='ingredient-container'>
+        <label *ngIf="eatableError" class="warning-edit">
+                {{eatableError}}
+        </label>
+        <label *ngIf="quantityError" class="warning-edit">
+                {{quantityError}}
+        </label>
+        <label *ngIf="unitError" class="warning-edit">
+                {{unitError}}
+        </label>
+    </div>
+
+</form>

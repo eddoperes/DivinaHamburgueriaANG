@@ -1,0 +1,83 @@
+<p class="error-message" *ngIf="inventoryItemsError?.message">
+    {{inventoryItemsError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="inventoryItemsWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<form class="form-edit" *ngIf="isDependecyReady()" [formGroup]="menuItemResaleForm" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" />
+
+    <label htmlFor="name">Nome:
+        <label *ngIf="nameError" class="warning-edit">
+            {{nameError}}
+        </label> 
+        <input type="text"
+               class="input-edit input-edit-text" 
+               formControlName="name"
+               required
+               minlength = "3"
+        />        
+    </label>
+
+    <label>Descrição:
+        <label *ngIf="descriptionError" class="warning-edit">
+            {{descriptionError}}
+        </label>
+        <input type="text" 
+               class="input-edit input-edit-text" 
+               formControlName="description"  
+               required
+        >
+    </label>
+
+    <label>Foto:
+        <label *ngIf="photoError" class="warning-edit">
+            {{photoError}}
+        </label>
+        <input type="text" 
+               class="input-edit input-edit-text" 
+               formControlName="photo"  
+               required
+        >
+    </label>
+
+    <label>Item do estoque:
+        <label *ngIf="inventoryItemError" class="warning-edit">
+            {{inventoryItemError}}
+        </label>
+        <select formControlName="inventoryItemId"  
+                class="select-edit"
+                required
+                >
+            <option value="">
+                ...
+            </option>
+            <option value={{inventoryItem.id}} *ngFor="let inventoryItem of inventoryItems">
+                {{inventoryItem.name}}
+            </option>
+        </select>
+    </label>
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           *ngIf="newOrEdit"/>
+
+    <div *ngIf="!newOrEdit">
+        <div class="warning-edit">
+            Atenção! Esta ação não pode ser desfeita
+        </div>
+        <div class="clear-both">
+        </div>
+        <div>
+            <input type="submit" 
+                   class="input-edit-submit-remove"
+                   value="Remover" 
+            />
+        </div>
+    </div>
+    
+</form>
+
