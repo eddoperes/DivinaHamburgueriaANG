@@ -53,7 +53,7 @@ export class InventorySearchComponent implements OnInit {
     if (this.units.length === 0)
       return ''
     var inventoryItem : InventoryItem = this.inventoryItems.filter(e => e.id === inventoryItemid)[0]
-    if (inventoryItem === null)
+    if (inventoryItem === null || inventoryItem == undefined)
       return ''
     return this.units.filter(u => u.id === inventoryItem.unityId )[0].name
   }

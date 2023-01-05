@@ -1,0 +1,13 @@
+<h1 class="h1-edit">Remover item do menu revenda</h1>
+
+<p class="error-message-edit" *ngIf="menuItemResaleError?.message">
+    {{menuItemResaleError.message}}
+</p> 
+
+<p class="waiting-icon-edit" *ngIf="menuItemResaleWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<app-menu-items-resale [sendData]="sendDataFunctionPointer"
+                       [setFormComponent]="setFormComponentFunctionPointer"
+></app-menu-items-resale>
