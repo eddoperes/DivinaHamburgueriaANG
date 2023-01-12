@@ -26,6 +26,11 @@ import { MenuItemsRecipeEditComponent } from './menu-items-recipe-all/menu-items
 import { MenuItemsRecipeRemoveComponent } from './menu-items-recipe-all/menu-items-recipe-remove/menu-items-recipe-remove.component';
 import { MenuItemsRecipeSearchComponent } from './menu-items-recipe-all/menu-items-recipe-search/menu-items-recipe-search.component';
 
+import { MenuNewComponent } from './menu-all/menu-new/menu-new.component';
+import { MenuEditComponent } from './menu-all/menu-edit/menu-edit.component';
+import { MenuRemoveComponent } from './menu-all/menu-remove/menu-remove.component';
+import { MenuSearchComponent } from './menu-all/menu-search/menu-search.component';
+
 const routes: Routes = [  
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -51,6 +56,11 @@ const routes: Routes = [
   { path: 'menuitemsrecipe/new', component: MenuItemsRecipeNewComponent },
   { path: 'menuitemsrecipe/edit/:id', component: MenuItemsRecipeEditComponent },
   { path: 'menuitemsrecipe/remove/:id', component: MenuItemsRecipeRemoveComponent },
+
+  { path: 'menus', component: MenuSearchComponent },
+  { path: 'menus/new', component: MenuNewComponent },
+  { path: 'menus/edit/:id', component: MenuEditComponent },
+  { path: 'menus/remove/:id', component: MenuRemoveComponent },
 
 ];
 

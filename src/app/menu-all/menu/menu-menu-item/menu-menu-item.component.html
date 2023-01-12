@@ -1,0 +1,58 @@
+<form *ngIf="isDependecyReady()" [formGroup]="menuItemsForm" >
+
+    <div *ngIf="number === 0" class='menu-item-container'>
+        <label class="select-edit-menu-item">
+                Item
+        </label>   
+        <label class="input-edit-menu-item input-edit-number-menu-item">
+                Preço
+        </label> 
+        <label class="input-edit">
+                Estado
+        </label>
+        <div class="space-remove-list-menu-item">                
+        </div>
+    </div>
+
+    <div class='menu-item-container' *ngIf="!deleted">
+
+            <input type="hidden" formControlName="id" >
+
+            <select class="select-edit-menu-item"  
+                    formControlName="menuItemId"
+            >                    
+                <option value={{menuItem.id}} *ngFor="let menuItem of menuItems">
+                    {{menuItem.name}}
+                </option>                                       
+            </select>          
+
+            <input type="number"
+                   class='input-edit-menu-item input-edit-number-menu-item'
+                   min="1"
+                   step="any"
+                   formControlName="price"                  
+            />
+
+            <label>
+                <input type="checkbox"
+                        class='input-edit'
+                        name="state"
+                        formControlName="state"               
+                />
+            Ativo</label> 
+
+            <button class='button-remove-list-menu-item' 
+                    [disabled]="disableItemsButtons"
+                    (click)="hideComponent($event)">
+                <mat-icon class="icon-size-menu-item">delete</mat-icon>
+            </button>
+
+    </div>
+
+    <div class='menu-item-container'>
+        <label *ngIf="priceError" class="warning-edit">
+                {{priceError}}
+        </label>        
+    </div>
+
+</form>

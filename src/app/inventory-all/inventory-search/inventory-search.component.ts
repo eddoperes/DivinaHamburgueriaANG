@@ -24,7 +24,7 @@ export class InventorySearchComponent implements OnInit {
 
   public filter: InventoryFilter = {
     eatable: "",
-    eatableDisabled: false,
+    eatableDisabled: false
   }
 
   public inventories: Array<Inventory> = [];
@@ -126,16 +126,14 @@ export class InventorySearchComponent implements OnInit {
                          } 
     }); 
     
-    this.filter.eatable = this.localStorageService.get("eatable");        
-    if (this.filter.eatable === '')
-      return;
+    this.filter.eatable = this.localStorageService.get("eatable");
     this.filter.eatableDisabled = this.localStorageService.get("eatableDisabled");
 
     var eatable;
     if (this.filter.eatableDisabled)
       eatable = "";
     else
-      eatable = this.filter.eatable;    
+      eatable = this.filter.eatable;
 
     this.executeSubmit(eatable);
     
@@ -165,6 +163,8 @@ export class InventorySearchComponent implements OnInit {
   }
 
   private executeSubmit(eatableId: string){
+
+    console.log(eatableId)
 
     this.hasInventoriesAnswer = false;
     setTimeout(() => {

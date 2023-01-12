@@ -37,6 +37,12 @@ import { MenuItemsRecipeNewComponent } from './menu-items-recipe-all/menu-items-
 import { MenuItemsRecipeRemoveComponent } from './menu-items-recipe-all/menu-items-recipe-remove/menu-items-recipe-remove.component';
 import { MenuItemsRecipeComponent } from './menu-items-recipe-all/menu-items-recipe/menu-items-recipe.component';
 import { IngredientsComponent } from './menu-items-recipe-all/menu-items-recipe/ingredients/ingredients.component';
+import { MenuSearchComponent } from './menu-all/menu-search/menu-search.component';
+import { MenuComponent } from './menu-all/menu/menu.component';
+import { MenuMenuItemComponent } from './menu-all/menu/menu-menu-item/menu-menu-item.component';
+import { MenuEditComponent } from './menu-all/menu-edit/menu-edit.component';
+import { MenuNewComponent } from './menu-all/menu-new/menu-new.component';
+import { MenuRemoveComponent } from './menu-all/menu-remove/menu-remove.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +75,12 @@ import { IngredientsComponent } from './menu-items-recipe-all/menu-items-recipe/
     MenuItemsRecipeRemoveComponent,
     MenuItemsRecipeComponent,
     IngredientsComponent,
+    MenuSearchComponent,
+    MenuComponent,
+    MenuMenuItemComponent,
+    MenuEditComponent,
+    MenuNewComponent,
+    MenuRemoveComponent,
   ],
   imports: [
     BrowserModule,

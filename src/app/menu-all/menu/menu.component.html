@@ -1,0 +1,79 @@
+<!--
+<p class="error-message" *ngIf="providersError?.message">
+    {{providersError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="providersWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<p class="error-message" *ngIf="inventoryItemsError?.message">
+    {{inventoryItemsError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="inventoryItemsWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+-->
+
+<form class="form-edit" [formGroup]="menuForm" *ngIf="isDependecyReady()" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" >
+
+    <label>Nome:
+        <label *ngIf="nameError" class="warning-edit">
+            {{nameError}}
+        </label> 
+        <input type="text"
+               class="input-edit input-edit-text" 
+               formControlName="name"
+               required
+               minlength = "3"
+        />        
+    </label>
+
+    <label>Descrição    
+        <label *ngIf="descriptionError" class="warning-edit">
+            {{descriptionError}}
+        </label>      
+        <textarea formControlName="description"
+                  name="description"
+                  class="textarea-edit input-edit-text"    
+                  required                           
+        >
+        </textarea>          
+    </label>
+
+    <label>
+    <input type="checkbox"
+           class='input-edit'
+           name="state"
+           formControlName="state"               
+    />
+    Ativo</label> 
+
+    <div class='accordion-container'>
+        <button class="accordion-button" (click)="AccordionClick($event)">
+          Itens
+        </button>
+        <div class="accordion-panel"
+            [style]="accordionPanelStyle"
+        >
+
+            <div #menuItemsContainer>                
+            </div>
+            
+            <button (click)="newItem($event)"                  
+                    class="input-edit-submit"
+                    [disabled]="disableItemsButtons"
+            >Adicionar</button>
+            <div class="clear-both">                
+            </div>
+
+        </div>
+    </div>
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           />
+
+</form>
