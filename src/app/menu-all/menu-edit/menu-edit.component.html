@@ -1,0 +1,13 @@
+<h1 class="h1-edit">Editar cardápio</h1>
+
+<p class="error-message-edit" *ngIf="menuError?.message">
+    {{menuError.message}}
+</p>  
+
+<p class="waiting-icon-edit" *ngIf="menuWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<app-menu [sendData]="sendDataFunctionPointer"
+          [setFormComponent]="setFormComponentFunctionPointer"
+></app-menu>
