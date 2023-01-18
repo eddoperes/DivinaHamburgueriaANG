@@ -1,0 +1,29 @@
+<form class="form-edit" *ngIf="isDependecyReady()" [formGroup]="phoneForm">
+
+    <label htmlFor="name">DDD:
+        <label *ngIf="dddError" class="warning-edit">
+            {{dddError}}
+        </label> 
+        <input type="text"
+               class="input-edit input-edit-text" 
+               formControlName="ddd"
+               required
+               minlength = "2"
+               maxlength = "2"
+        />        
+    </label>
+
+    <label htmlFor="name">Numero:
+        <label *ngIf="numberError" class="warning-edit">
+            {{numberError}}
+        </label> 
+        <input type="text"
+               class="input-edit input-edit-text" 
+               formControlName="number"
+               required
+               minlength = "8"
+               maxlength = "9"
+        />        
+    </label>
+
+</form>

@@ -1,0 +1,13 @@
+<h1 class="h1-edit">Editar cliente</h1>
+
+<p class="error-message-edit" *ngIf="customerError?.message">
+    {{customerError.message}}
+</p>  
+
+<p class="waiting-icon-edit" *ngIf="customerWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<app-customers [sendData]="sendDataFunctionPointer"
+               [setFormComponent]="setFormComponentFunctionPointer"
+></app-customers>

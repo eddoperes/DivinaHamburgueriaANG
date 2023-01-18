@@ -43,6 +43,13 @@ import { MenuMenuItemComponent } from './menu-all/menu/menu-menu-item/menu-menu-
 import { MenuEditComponent } from './menu-all/menu-edit/menu-edit.component';
 import { MenuNewComponent } from './menu-all/menu-new/menu-new.component';
 import { MenuRemoveComponent } from './menu-all/menu-remove/menu-remove.component';
+import { CustomersSearchComponent } from './customers-all/customers-search/customers-search.component';
+import { CustomersEditComponent } from './customers-all/customers-edit/customers-edit.component';
+import { CustomersComponent } from './customers-all/customers/customers.component';
+import { AddressComponent } from './shared/address/address.component';
+import { PhoneComponent } from './shared/phone/phone.component';
+import { CustomersRemoveComponent } from './customers-all/customers-remove/customers-remove.component';
+import { CustomersNewComponent } from './customers-all/customers-new/customers-new.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +88,13 @@ import { MenuRemoveComponent } from './menu-all/menu-remove/menu-remove.componen
     MenuEditComponent,
     MenuNewComponent,
     MenuRemoveComponent,
+    CustomersSearchComponent,
+    CustomersEditComponent,
+    CustomersComponent,
+    AddressComponent,
+    PhoneComponent,
+    CustomersRemoveComponent,
+    CustomersNewComponent,
   ],
   imports: [
     BrowserModule,

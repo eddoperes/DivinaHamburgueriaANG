@@ -31,6 +31,12 @@ import { MenuEditComponent } from './menu-all/menu-edit/menu-edit.component';
 import { MenuRemoveComponent } from './menu-all/menu-remove/menu-remove.component';
 import { MenuSearchComponent } from './menu-all/menu-search/menu-search.component';
 
+import { CustomersNewComponent } from './customers-all/customers-new/customers-new.component';
+import { CustomersEditComponent } from './customers-all/customers-edit/customers-edit.component';
+import { CustomersRemoveComponent } from './customers-all/customers-remove/customers-remove.component';
+import { CustomersSearchComponent } from './customers-all/customers-search/customers-search.component';
+
+
 const routes: Routes = [  
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -61,6 +67,11 @@ const routes: Routes = [
   { path: 'menus/new', component: MenuNewComponent },
   { path: 'menus/edit/:id', component: MenuEditComponent },
   { path: 'menus/remove/:id', component: MenuRemoveComponent },
+
+  { path: 'customers', component: CustomersSearchComponent },
+  { path: 'customers/new', component: CustomersNewComponent },
+  { path: 'customers/edit/:id', component: CustomersEditComponent },
+  { path: 'customers/remove/:id', component: CustomersRemoveComponent },
 
 ];
 

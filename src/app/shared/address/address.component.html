@@ -1,0 +1,84 @@
+<form class="form-edit" *ngIf="isDependecyReady()" [formGroup]="addressForm">
+
+    <label htmlFor="name">CEP:
+        <label *ngIf="postalCodeError" class="warning-edit">
+            {{postalCodeError}}
+        </label> 
+        <input type="text"
+               class="input-edit input-edit-text" 
+               formControlName="postalCode"
+               required
+               minlength = "8"
+        />        
+    </label>
+
+    <label>Rua:
+        <label *ngIf="streetError" class="warning-edit">
+            {{streetError}}
+        </label>
+        <input type="text" 
+               class="input-edit input-edit-text"
+               formControlName="street"  
+               required
+               maxlength = "50"
+        />
+    </label>
+
+    <label>Numero:
+        <label *ngIf="numberError" class="warning-edit">
+            {{numberError}}
+        </label>
+        <input type="number" 
+               class="input-edit input-edit-number"
+               formControlName="number"  
+               required
+               min = "1"
+        />
+    </label>
+
+    <label>Complemento:
+        <input type="text" 
+               class="input-edit input-edit-text"
+               formControlName="complement"  
+               maxlength = "50"
+        />
+    </label>
+
+    <label>Bairro:
+        <label *ngIf="districtError" class="warning-edit">
+            {{districtError}}
+        </label>
+        <input type="text" 
+               class="input-edit input-edit-text"
+               formControlName="district"  
+               maxlength = "50"
+               required
+        />
+    </label>
+
+    <label>Cidade:
+        <label *ngIf="cityError" class="warning-edit">
+            {{cityError}}
+        </label>
+        <input type="text" 
+               class="input-edit input-edit-text"
+               formControlName="city"  
+               maxlength = "50"
+               required
+        />
+    </label>
+
+    <label>UF:
+        <label *ngIf="federationUnityError" class="warning-edit">
+            {{federationUnityError}}
+        </label>
+        <input type="text" 
+               class="input-edit input-edit-text"
+               formControlName="federationUnity"  
+               maxlength = "2"
+               required
+        />
+    </label>
+    
+</form>
+
