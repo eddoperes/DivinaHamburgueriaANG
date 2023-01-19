@@ -50,6 +50,11 @@ import { AddressComponent } from './shared/address/address.component';
 import { PhoneComponent } from './shared/phone/phone.component';
 import { CustomersRemoveComponent } from './customers-all/customers-remove/customers-remove.component';
 import { CustomersNewComponent } from './customers-all/customers-new/customers-new.component';
+import { ProvidersComponent } from './providers-all/providers/providers.component';
+import { ProvidersEditComponent } from './providers-all/providers-edit/providers-edit.component';
+import { ProvidersNewComponent } from './providers-all/providers-new/providers-new.component';
+import { ProvidersRemoveComponent } from './providers-all/providers-remove/providers-remove.component';
+import { ProvidersSearchComponent } from './providers-all/providers-search/providers-search.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +100,11 @@ import { CustomersNewComponent } from './customers-all/customers-new/customers-n
     PhoneComponent,
     CustomersRemoveComponent,
     CustomersNewComponent,
+    ProvidersComponent,
+    ProvidersEditComponent,
+    ProvidersNewComponent,
+    ProvidersRemoveComponent,
+    ProvidersSearchComponent,
   ],
   imports: [
     BrowserModule,

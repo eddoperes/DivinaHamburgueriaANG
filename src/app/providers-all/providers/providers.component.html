@@ -1,0 +1,74 @@
+<form class="form-edit" *ngIf="isDependecyReady()" [formGroup]="providerForm" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" />
+
+    <label htmlFor="name">Nome:
+        <label *ngIf="nameError" class="warning-edit">
+            {{nameError}}
+        </label> 
+        <input type="text"
+               class="input-edit input-edit-text" 
+               formControlName="name"
+               required
+               minlength = "3"
+        />        
+    </label>
+
+    <label>CNPJ:
+        <label *ngIf="cnpjError" class="warning-edit">
+            {{cnpjError}}
+        </label>
+        <input type="text" 
+               class="input-edit input-edit-text"
+               formControlName="cnpj"  
+               required
+               minlength = "14"
+        />
+    </label>
+
+    <div class='accordion-container'>
+        <button class="accordion-button" 
+                (click)="accordionClick($event)"            
+                >Endereço
+        </button>
+        <div class="accordion-panel" 
+             [style]="accordionAddressPanelStyle"
+        >
+            <app-address [setFormComponent]="setAddressFormComponentFunctionPointer"
+            ></app-address>
+        </div>
+    </div>
+
+    <div class='accordion-container'>
+        <button class="accordion-button" 
+                (click)="accordionClick($event)"            
+                >Telefone
+        </button>
+        <div class="accordion-panel" 
+            [style]="accordionPhonePanelStyle"
+        >
+            <app-phone [setFormComponent]="setPhoneFormComponentFunctionPointer"
+            ></app-phone>
+        </div>
+    </div>
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           *ngIf="newOrEdit"/>
+
+    <div *ngIf="!newOrEdit">
+        <div class="warning-edit">
+            Atenção! Esta ação não pode ser desfeita
+        </div>
+        <div class="clear-both">
+        </div>
+        <div>
+            <input type="submit" 
+                   class="input-edit-submit-remove"
+                   value="Remover" 
+            />
+        </div>
+    </div>
+    
+</form>
