@@ -36,6 +36,11 @@ import { CustomersEditComponent } from './customers-all/customers-edit/customers
 import { CustomersRemoveComponent } from './customers-all/customers-remove/customers-remove.component';
 import { CustomersSearchComponent } from './customers-all/customers-search/customers-search.component';
 
+import { ProvidersNewComponent } from './providers-all/providers-new/providers-new.component';
+import { ProvidersEditComponent } from './providers-all/providers-edit/providers-edit.component';
+import { ProvidersRemoveComponent } from './providers-all/providers-remove/providers-remove.component';
+import { ProvidersSearchComponent } from './providers-all/providers-search/providers-search.component';
+
 
 const routes: Routes = [  
   { path: '', component: HomeComponent },
@@ -72,6 +77,11 @@ const routes: Routes = [
   { path: 'customers/new', component: CustomersNewComponent },
   { path: 'customers/edit/:id', component: CustomersEditComponent },
   { path: 'customers/remove/:id', component: CustomersRemoveComponent },
+
+  { path: 'providers', component: ProvidersSearchComponent },
+  { path: 'providers/new', component: ProvidersNewComponent },
+  { path: 'providers/edit/:id', component: ProvidersEditComponent },
+  { path: 'providers/remove/:id', component: ProvidersRemoveComponent },
 
 ];
 

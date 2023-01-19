@@ -1,0 +1,13 @@
+<h1 class="h1-edit">Remover fornecedor</h1>
+
+<p class="error-message-edit" *ngIf="providerError?.message">
+    {{providerError.message}}
+</p>  
+
+<p class="waiting-icon-edit" *ngIf="providerWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<app-providers [sendData]="sendDataFunctionPointer"
+               [setFormComponent]="setFormComponentFunctionPointer"
+></app-providers>
