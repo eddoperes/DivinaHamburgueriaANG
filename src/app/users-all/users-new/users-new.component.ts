@@ -3,41 +3,42 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 //data
-import { Customer } from 'src/app/module/customer';
-import { CustomersService } from 'src/app/services/customers.service';
+import { User } from 'src/app/module/user';
+import { UsersService } from 'src/app/services/users.service';
 
 //form
-import { CustomersComponent } from '../customers/customers.component';
+import { UsersComponent } from '../users/users.component';
 
 @Component({
-  selector: 'app-customer-new',
-  templateUrl: './customers-new.component.html',
-  styleUrls: ['./customers-new.component.scss']
+  selector: 'app-user-new',
+  templateUrl: './users-new.component.html',
+  styleUrls: ['./users-new.component.scss']
 })
-export class CustomersNewComponent implements OnInit {
+export class UsersNewComponent implements OnInit {
 
   public sendDataFunctionPointer = this.sendData.bind(this);
   public setFormComponentFunctionPointer = this.setFormComponent.bind(this);
 
-  constructor(private customersService: CustomersService,
+  constructor(private usersService: UsersService,
               private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  public setFormComponent(formComponent: CustomersComponent){    
+  public setFormComponent(formComponent: UsersComponent){    
     var configure:any = {
       disableInputs: false,
+      showPassword: true,
     }
     formComponent.populateConfig(configure);
   }
 
-  public sendData(id: number, customer: Customer | null):void{
+  public sendData(id: number, user: User | null):void{
     
-    this.customersService
-        .customerNew(id, JSON.stringify(customer))    
+    this.usersService
+        .userNew(id, JSON.stringify(user))    
         .subscribe({
-          next: (res) => {this.router.navigateByUrl('customers')},
+          next: (res) => {this.router.navigateByUrl('users')},
           error: (error) => { 
                               if (error.status === 401){
                                 this.router.navigateByUrl('login');

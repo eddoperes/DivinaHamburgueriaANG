@@ -16,11 +16,11 @@ export class CustomersService {
   private getToken(): string {
     var storage = window.localStorage;
     if (storage) {
-      var value = storage.getItem("token");
-      if (value === null)
-        return "";
-      else
-        return JSON.parse(value);
+        var value = storage.getItem("token");
+        if (value === null)
+          return "";
+        else
+          return JSON.parse(value).accessToken;
     }
     return "";
   }

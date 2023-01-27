@@ -1,0 +1,13 @@
+<h1 class="h1-edit">Remover usuário</h1>
+
+<p class="error-message-edit" *ngIf="userError?.message">
+    {{userError.message}}
+</p>  
+
+<p class="waiting-icon-edit" *ngIf="userWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<app-users [sendData]="sendDataFunctionPointer"
+           [setFormComponent]="setFormComponentFunctionPointer"
+></app-users>

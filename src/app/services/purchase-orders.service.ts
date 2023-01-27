@@ -20,7 +20,7 @@ export class PurchaseOrdersService {
       if (value === null)
         return "";
       else
-        return JSON.parse(value);
+        return JSON.parse(value).accessToken;
     }
     return "";
   }

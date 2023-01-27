@@ -1,0 +1,85 @@
+<form class="form-edit" *ngIf="isDependecyReady()" [formGroup]="userForm" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" />
+
+    <label htmlFor="name">Nome:
+        <label *ngIf="nameError" class="warning-edit">
+            {{nameError}}
+        </label> 
+        <input type="text"
+               class="input-edit input-edit-text" 
+               formControlName="name"
+               required
+               minlength = "3"
+        />        
+    </label>   
+
+    <label>Tipo:
+        <select formControlName="type"  
+                class="select-edit"
+                >
+            <option value={{1}}>
+                Administrator
+            </option>
+            <option value={{2}}>
+                Auxiliar
+            </option>
+            <option value={{3}}>
+                Caixa
+            </option>
+        </select>
+    </label>
+
+    <div>
+        <label>
+            <input type="checkbox"
+                   class='input-edit'
+                   formControlName="state"     
+            />
+        Ativo</label> 
+    </div>
+
+    <label htmlFor="name">E-mail:
+        <label *ngIf="emailError" class="warning-edit">
+            {{emailError}}
+        </label> 
+        <input type="email"
+               class="input-edit input-edit-text" 
+               formControlName="email"
+               required            
+        />        
+    </label>
+
+    <label htmlFor="name" *ngIf="showPassword">Senha:
+        <label *ngIf="passwordError" class="warning-edit">
+            {{passwordError}}
+        </label> 
+        <input type="password"
+               class="input-edit input-edit-text" 
+               formControlName="password"
+               required      
+               minlength="8"      
+        />        
+    </label>
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           *ngIf="newOrEdit"/>
+
+    <div *ngIf="!newOrEdit">
+        <div class="warning-edit">
+            Atenção! Esta ação não pode ser desfeita
+        </div>
+        <div class="clear-both">
+        </div>
+        <div>
+            <input type="submit" 
+                   class="input-edit-submit-remove"
+                   value="Remover" 
+            />
+        </div>
+    </div>
+    
+</form>
+

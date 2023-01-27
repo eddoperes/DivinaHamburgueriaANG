@@ -19,7 +19,7 @@
         <a [routerLink]="['/menuitemsresale']">Itens do cardápio revenda</a>        
         <a [routerLink]="['/menus']">Cardápios</a>       
         <hr />
-        <a >Pedidos salão</a>
+        <a [routerLink]="['/hallorders']">Pedidos salão</a>
         <a >Pedidos delivery</a>
       </div>        
     </div> 
@@ -49,14 +49,21 @@
       </div>        
     </div> 
     
-    <a [routerLink]="['/login']" *ngIf="!hasToken()">
-      <mat-icon>supervisor_account</mat-icon>
-      Login
-    </a>
-
-    <a [routerLink]="['/']" *ngIf="hasToken()" (click)="handleLogout()">
-      <mat-icon>supervisor_account</mat-icon>
-      Sair
-    </a>
+    <div class="dropdown">
+      <button class="dropbtn">           
+        <mat-icon>supervisor_account</mat-icon>
+        Login
+      </button>
+      <div class="dropdown-content">
+        <a [routerLink]="['/users']">Usuários</a>
+        <hr />
+        <a [routerLink]="['/login']" *ngIf="!hasToken()">
+          Entrar
+        </a>
+        <a [routerLink]="['/']" *ngIf="hasToken()" (click)="handleLogout()">
+          Sair
+        </a>
+      </div>                
+    </div> 
 
   </div>    
