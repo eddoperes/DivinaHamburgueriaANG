@@ -55,6 +55,16 @@ import { ProvidersEditComponent } from './providers-all/providers-edit/providers
 import { ProvidersNewComponent } from './providers-all/providers-new/providers-new.component';
 import { ProvidersRemoveComponent } from './providers-all/providers-remove/providers-remove.component';
 import { ProvidersSearchComponent } from './providers-all/providers-search/providers-search.component';
+import { UsersComponent } from './users-all/users/users.component';
+import { UsersSearchComponent } from './users-all/users-search/users-search.component';
+import { UsersEditComponent } from './users-all/users-edit/users-edit.component';
+import { UsersNewComponent } from './users-all/users-new/users-new.component';
+import { UsersRemoveComponent } from './users-all/users-remove/users-remove.component';
+import { HallOrdersSearchComponent } from './hall-orders-all/hall-orders-search/hall-orders-search.component';
+import { HallOrdersNewComponent } from './hall-orders-all/hall-orders-new/hall-orders-new.component';
+import { HallOrdersComponent } from './hall-orders-all/hall-orders/hall-orders.component';
+import { HallOrdersEditComponent } from './hall-orders-all/hall-orders-edit/hall-orders-edit.component';
+import { HallOrdersMenuItemsComponent } from './hall-orders-all/hall-orders/hall-orders-menu-items/hall-orders-menu-items.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +115,16 @@ import { ProvidersSearchComponent } from './providers-all/providers-search/provi
     ProvidersNewComponent,
     ProvidersRemoveComponent,
     ProvidersSearchComponent,
+    UsersComponent,
+    UsersSearchComponent,
+    UsersEditComponent,
+    UsersNewComponent,
+    UsersRemoveComponent,
+    HallOrdersSearchComponent,
+    HallOrdersNewComponent,
+    HallOrdersComponent,
+    HallOrdersEditComponent,
+    HallOrdersMenuItemsComponent,
   ],
   imports: [
     BrowserModule,

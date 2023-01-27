@@ -1,0 +1,120 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<h1 class="h1-list">
+    Pedidos salão
+</h1>    
+
+<form class="form-list" #form="ngForm" (ngSubmit)="handleSubmit(form)">
+
+    <div class="main-filter">
+
+        <div class="left-filter">
+            
+            <label>
+                <input type="radio" 
+                      class="input-list"                                        
+                      id="provider" 
+                      name="provider" 
+                      [checked]="!filter.codeDisabled"   
+                      (change)="providerSpecificChange($event)"
+                      />
+                Código
+            </label>
+
+            <input type="text"
+                   [(ngModel)]="filter.code"
+                   #name="ngModel"     
+                   name="code"     
+                   disabled={{filter.codeDisabled}}       
+                   class="input-list input-list-text"               
+            />            
+
+        </div>
+
+        <div className="right-filter">
+            <label>
+                <input type="radio" 
+                       class="input-list"
+                       id="provider" 
+                       name="provider" 
+                       (change)="providerAnyChange($event)"
+                       [checked]="filter.codeDisabled" 
+                       value="*"  />
+                Qualquer
+            </label>
+        </div>
+
+    </div>
+
+    <div>
+        <input type="submit" 
+            class="input-list-submit" 
+            value="Pesquisar" />                            
+    </div> 
+    <div class='clear-both'>
+    </div> 
+
+</form>
+
+<div class="button-new-list-container">
+    <a [routerLink]="['/hallorders/new']"  >
+        <button class='button-new-list'>
+            <mat-icon>add_to_photos</mat-icon>
+        </button>                
+    </a>    
+</div>
+
+<p class="error-message" *ngIf="hallOrdersError?.message">
+    {{hallOrdersError.message}}
+</p>  
+
+<p class="waiting-icon" *ngIf="hallOrdersWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<app-messagebox [handleRegister]="handleRegisterCancelFunctionPointer"
+                [handleConfirmed]="handleCofirmedCancelFunctionPointer"
+>               
+</app-messagebox>
+
+<app-messagebox [handleRegister]="handleRegisterProgressFunctionPointer"
+                [handleConfirmed]="handleCofirmedProgressFunctionPointer"
+>               
+</app-messagebox>
+
+<div class="card-container">
+
+    <div *ngFor="let item of hallorders" >
+
+        <div class='card'>
+            <div>
+                {{item.id}}
+            </div>  
+            <div>
+                {{item.observation}}
+            </div>  
+            <div>
+                {{getStateDescription(item.state)}}                                           
+            </div>  
+            <div>
+                <div>{{item.total | currency}}</div>
+            </div>              
+            <div>
+                <a [routerLink]="['/hallorders/edit', item.id]"  >
+                    <button class='button-edit-list'>
+                        <mat-icon>edit</mat-icon>
+                    </button>                       
+                </a>                
+                <button class='button-remove-list' (click)="handleCancelClick($event, item)">
+                        <mat-icon>cancel</mat-icon>
+                </button>    
+                <button class='button-progress-list' (click)="handleProgressClick($event, item)">
+                        <mat-icon>subdirectory_arrow_right</mat-icon>
+                </button>                                                                                        
+            </div>                    
+        </div>
+
+    </div>
+
+</div>
+

@@ -164,7 +164,7 @@ export class InventorySearchComponent implements OnInit {
 
   private executeSubmit(eatableId: string){
 
-    console.log(eatableId)
+    //console.log(eatableId)
 
     this.hasInventoriesAnswer = false;
     setTimeout(() => {

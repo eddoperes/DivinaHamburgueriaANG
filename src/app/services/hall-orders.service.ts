@@ -1,18 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Menu } from '../module/menu';
+import { HallOrder } from '../module/hallOrder';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenusService {
+export class HallOrdersService {
 
-  private url: string = `${environment.url}/menus`;
+  private url: string = `${environment.url}/hallorders`;
 
   constructor(private http: HttpClient) { }
-  
+
   private getToken(): string {
     var storage = window.localStorage;
     if (storage) {
@@ -25,46 +25,42 @@ export class MenusService {
     return "";
   }
 
-  public menu(): Observable<Array<Menu>>{
-
+  public hallOrders(): Observable<Array<HallOrder>>{
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
-
-    return this.http.get<Array<Menu>>(this.url, httpOptions)
+    return this.http.get<Array<HallOrder>>(this.url, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
                     );                  
   }
 
-  public menuByName(name: string): Observable<Array<Menu>>{
-
+  public hallOrdersByCode(code: string): Observable<Array<HallOrder>>{
+    if (code===null || code === undefined)
+      code = "";
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
-    }
-
-    return this.http.get<Array<Menu>>(`${this.url}/GetByName?name=${name}`, httpOptions)
+    }  
+    return this.http.get<Array<HallOrder>>(`${this.url}/GetByCode?code=${code}`, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
                     );                  
   }
 
-  public menuById(id: string): Observable<Menu>{
-
+  public hallOrdersById(id: string): Observable<HallOrder>{
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
-
-    return this.http.get<Menu>(`${this.url}/${id}`, httpOptions)
+    return this.http.get<HallOrder>(`${this.url}/${id}`, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
                     );                  
   }
 
-  public menuEdit(id: number, body: string): Observable<Menu>{
+  public hallOrdersEdit(id: number, body: string): Observable<HallOrder>{
 
     const httpOptions = {
       headers: new HttpHeaders()
@@ -72,18 +68,16 @@ export class MenusService {
                    .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
-    return this.http.put<Menu>(`${this.url}/${id}`, 
-                                body, 
-                                httpOptions) 
+    return this.http.put<HallOrder>(`${this.url}/${id}`, 
+                                         body, 
+                                         httpOptions) 
                     .pipe(
                       res => res,
                       error => error,                      
                     );       
   }
 
-  public menuNew(id: number, body: string): Observable<Menu>{
-
-    console.log(body);
+  public hallOrdersPatch(id: number, body: string): Observable<HallOrder>{
 
     const httpOptions = {
       headers: new HttpHeaders()
@@ -91,26 +85,41 @@ export class MenusService {
                    .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
-    return this.http.post<Menu>(this.url, 
-                                body, 
-                                httpOptions) 
+    return this.http.patch<HallOrder>(`${this.url}/${id}`, 
+                                         body, 
+                                         httpOptions) 
                     .pipe(
                       res => res,
                       error => error,                      
                     );       
   }
 
-  public menuDelete(id: number): Observable<Menu>{
+  public hallOrdersNew(id: number, body: string): Observable<HallOrder>{
 
+    const httpOptions = {
+      headers: new HttpHeaders()
+                   .set('content-type', 'application/json')
+                   .set('Authorization', `Bearer ${this.getToken()}`)      
+    }
+
+    return this.http.post<HallOrder>(this.url, 
+                                         body, 
+                                         httpOptions) 
+                    .pipe(
+                      res => res,
+                      error => error,                      
+                    );       
+  }
+
+  public hallOrdersDelete(id: number): Observable<HallOrder>{
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
-
-    return this.http.delete<Menu>(`${this.url}/${id}`, httpOptions) 
+    return this.http.delete<HallOrder>(`${this.url}/${id}`, httpOptions) 
                     .pipe(
                       res => res,
                       error => error,                      
                     );       
   }
-
+  
 }

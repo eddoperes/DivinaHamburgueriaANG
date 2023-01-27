@@ -1,18 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Menu } from '../module/menu';
+import { User } from '../module/user';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenusService {
+export class UsersService {
 
-  private url: string = `${environment.url}/menus`;
+  private url: string = `${environment.url}/users`;
 
   constructor(private http: HttpClient) { }
-  
+
   private getToken(): string {
     var storage = window.localStorage;
     if (storage) {
@@ -25,46 +25,48 @@ export class MenusService {
     return "";
   }
 
-  public menu(): Observable<Array<Menu>>{
+  public users(): Observable<Array<User>>{
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
 
-    return this.http.get<Array<Menu>>(this.url, httpOptions)
+    return this.http.get<Array<User>>(this.url, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
                     );                  
   }
 
-  public menuByName(name: string): Observable<Array<Menu>>{
+  public usersByName(name: string): Observable<Array<User>>{
+    if (name===null)
+      name = "";
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
 
-    return this.http.get<Array<Menu>>(`${this.url}/GetByName?name=${name}`, httpOptions)
+    return this.http.get<Array<User>>(`${this.url}/GetByName?name=${name}`, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
                     );                  
   }
 
-  public menuById(id: string): Observable<Menu>{
+  public userById(id: string): Observable<User>{
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
 
-    return this.http.get<Menu>(`${this.url}/${id}`, httpOptions)
+    return this.http.get<User>(`${this.url}/${id}`, httpOptions)
                     .pipe(
                       res => res,
                       error => error,                      
                     );                  
   }
 
-  public menuEdit(id: number, body: string): Observable<Menu>{
+  public userEdit(id: number, body: string): Observable<User>{
 
     const httpOptions = {
       headers: new HttpHeaders()
@@ -72,18 +74,16 @@ export class MenusService {
                    .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
-    return this.http.put<Menu>(`${this.url}/${id}`, 
-                                body, 
-                                httpOptions) 
+    return this.http.patch<User>(`${this.url}/${id}`, 
+                                   body, 
+                                   httpOptions) 
                     .pipe(
                       res => res,
                       error => error,                      
                     );       
   }
 
-  public menuNew(id: number, body: string): Observable<Menu>{
-
-    console.log(body);
+  public userNew(id: number, body: string): Observable<User>{
 
     const httpOptions = {
       headers: new HttpHeaders()
@@ -91,26 +91,27 @@ export class MenusService {
                    .set('Authorization', `Bearer ${this.getToken()}`)      
     }
 
-    return this.http.post<Menu>(this.url, 
-                                body, 
-                                httpOptions) 
+    return this.http.post<User>(this.url, 
+                                    body, 
+                                    httpOptions) 
                     .pipe(
                       res => res,
                       error => error,                      
                     );       
   }
 
-  public menuDelete(id: number): Observable<Menu>{
+  public userDelete(id: number): Observable<User>{
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization' : `Bearer ${this.getToken()}`})
     }
 
-    return this.http.delete<Menu>(`${this.url}/${id}`, httpOptions) 
+    return this.http.delete<User>(`${this.url}/${id}`, httpOptions) 
                     .pipe(
                       res => res,
                       error => error,                      
                     );       
   }
+
 
 }

@@ -41,6 +41,14 @@ import { ProvidersEditComponent } from './providers-all/providers-edit/providers
 import { ProvidersRemoveComponent } from './providers-all/providers-remove/providers-remove.component';
 import { ProvidersSearchComponent } from './providers-all/providers-search/providers-search.component';
 
+import { UsersNewComponent } from './users-all/users-new/users-new.component';
+import { UsersEditComponent } from './users-all/users-edit/users-edit.component';
+import { UsersRemoveComponent } from './users-all/users-remove/users-remove.component';
+import { UsersSearchComponent } from './users-all/users-search/users-search.component';
+
+import { HallOrdersNewComponent } from './hall-orders-all/hall-orders-new/hall-orders-new.component';
+import { HallOrdersEditComponent } from './hall-orders-all/hall-orders-edit/hall-orders-edit.component';
+import { HallOrdersSearchComponent } from './hall-orders-all/hall-orders-search/hall-orders-search.component';
 
 const routes: Routes = [  
   { path: '', component: HomeComponent },
@@ -82,6 +90,16 @@ const routes: Routes = [
   { path: 'providers/new', component: ProvidersNewComponent },
   { path: 'providers/edit/:id', component: ProvidersEditComponent },
   { path: 'providers/remove/:id', component: ProvidersRemoveComponent },
+
+  { path: 'users', component: UsersSearchComponent },
+  { path: 'users/new', component: UsersNewComponent },
+  { path: 'users/edit/:id', component: UsersEditComponent },
+  { path: 'users/remove/:id', component: UsersRemoveComponent },
+
+  { path: 'hallorders', component: HallOrdersSearchComponent },
+  { path: 'hallorders/new', component: HallOrdersNewComponent },
+  { path: 'hallorders/edit/:id', component: HallOrdersEditComponent },
+
 
 ];
 

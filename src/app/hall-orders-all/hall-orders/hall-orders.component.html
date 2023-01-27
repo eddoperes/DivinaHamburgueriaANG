@@ -1,0 +1,76 @@
+
+<p class="error-message" *ngIf="menuItemsRecipeError?.message">
+    {{menuItemsRecipeError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="menuItemsRecipeWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<p class="error-message" *ngIf="menuItemsResaleError?.message">
+    {{menuItemsResaleError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="menuItemsResaleWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<form class="form-edit" [formGroup]="hallOrderForm" *ngIf="isDependecyReady()" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" >
+
+    <label>Código
+        <input type="number"
+              class='input-edit input-edit-number'
+              formControlName="id" 
+              readOnly
+        />
+      </label>
+
+    <label > Observação          
+        <textarea formControlName="observation"
+                  class="textarea-edit"                               
+        >
+        </textarea>          
+    </label>
+
+    <label>Total
+        <label *ngIf="totalError" class="warning-edit">
+            {{totalError}}
+        </label>
+        <input type="number"
+               class='input-edit input-edit-number'
+               formControlName="total"
+               min="1"    
+        />
+    </label>
+
+    <div class='accordion-container'>
+        <button class="accordion-button" (click)="AccordionClick($event)">
+          Itens
+        </button>
+        <div class="accordion-panel"
+            [style]="accordionPanelStyle"
+        >
+
+            <div #menuItemsContainer>                
+            </div>
+            
+            <button (click)="newItem($event)"                  
+                    class="input-edit-submit"
+                    [disabled]="disableItemsButtons"
+            >Adicionar</button>
+            <div class="clear-both">                
+            </div>
+
+        </div>
+    </div>
+
+    <input type="hidden" formControlName="state" >
+
+    <input type="hidden" formControlName="userId" >
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           />
+
+</form>
