@@ -65,6 +65,11 @@ import { HallOrdersNewComponent } from './hall-orders-all/hall-orders-new/hall-o
 import { HallOrdersComponent } from './hall-orders-all/hall-orders/hall-orders.component';
 import { HallOrdersEditComponent } from './hall-orders-all/hall-orders-edit/hall-orders-edit.component';
 import { HallOrdersMenuItemsComponent } from './hall-orders-all/hall-orders/hall-orders-menu-items/hall-orders-menu-items.component';
+import { DeliveryOrdersComponent } from './delivery-orders-all/delivery-orders/delivery-orders.component';
+import { DeliveryOrdersSearchComponent } from './delivery-orders-all/delivery-orders-search/delivery-orders-search.component';
+import { DeliveryOrdersEditComponent } from './delivery-orders-all/delivery-orders-edit/delivery-orders-edit.component';
+import { DeliveryOrdersNewComponent } from './delivery-orders-all/delivery-orders-new/delivery-orders-new.component';
+import { DeliveryOrdersMenuItemsComponent } from './delivery-orders-all/delivery-orders/delivery-orders-menu-items/delivery-orders-menu-items.component';
 
 @NgModule({
   declarations: [
@@ -125,6 +130,11 @@ import { HallOrdersMenuItemsComponent } from './hall-orders-all/hall-orders/hall
     HallOrdersComponent,
     HallOrdersEditComponent,
     HallOrdersMenuItemsComponent,
+    DeliveryOrdersComponent,
+    DeliveryOrdersSearchComponent,
+    DeliveryOrdersEditComponent,
+    DeliveryOrdersNewComponent,
+    DeliveryOrdersMenuItemsComponent,
   ],
   imports: [
     BrowserModule,
