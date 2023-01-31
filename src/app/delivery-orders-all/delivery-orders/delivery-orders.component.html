@@ -1,0 +1,78 @@
+<form class="form-edit" [formGroup]="deliveryOrderForm" *ngIf="isDependecyReady()" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" >
+
+    <label>Código
+        <input type="number"
+              class='input-edit input-edit-number'
+              formControlName="id" 
+              readOnly
+        />
+    </label>
+
+    <label>Cliente
+        <label *ngIf="customerError" class="warning-edit">
+            {{customerError}}
+        </label>
+        <select formControlName="customerId"  
+                class="select-edit"  
+                required
+        >
+            <option value={{customer.id}} *ngFor="let customer of customers">
+                {{customer.name}}
+            </option>                   
+        </select>          
+    </label>
+
+    <label>Observação          
+        <textarea formControlName="observation"
+                  class="textarea-edit"                               
+        >
+        </textarea>          
+    </label>
+
+    <label>Total
+        <label *ngIf="totalError" class="warning-edit">
+            {{totalError}}
+        </label>
+        <input type="number"
+               class='input-edit input-edit-number'
+               formControlName="total"
+               min="1"    
+        />
+    </label>
+
+    <div class='accordion-container'>
+        <button class="accordion-button" (click)="AccordionClick($event)">
+          Itens
+        </button>
+        <div class="accordion-panel"
+            [style]="accordionPanelStyle"
+        >
+
+            <div #menuItemsContainer>                
+            </div>
+            
+            <button (click)="newItem($event)"                  
+                    class="input-edit-submit"
+                    [disabled]="disableItemsButtons"
+            >Adicionar</button>
+            <div class="clear-both">                
+            </div>
+
+        </div>
+    </div>
+
+    <input type="hidden" formControlName="state" >
+
+    <input type="hidden" formControlName="payment" >
+
+    <input type="hidden" formControlName="userId" >
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           />
+
+</form>
+

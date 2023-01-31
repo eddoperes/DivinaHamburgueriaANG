@@ -50,6 +50,10 @@ import { HallOrdersNewComponent } from './hall-orders-all/hall-orders-new/hall-o
 import { HallOrdersEditComponent } from './hall-orders-all/hall-orders-edit/hall-orders-edit.component';
 import { HallOrdersSearchComponent } from './hall-orders-all/hall-orders-search/hall-orders-search.component';
 
+import { DeliveryOrdersNewComponent } from './delivery-orders-all/delivery-orders-new/delivery-orders-new.component';
+import { DeliveryOrdersEditComponent } from './delivery-orders-all/delivery-orders-edit/delivery-orders-edit.component';
+import { DeliveryOrdersSearchComponent } from './delivery-orders-all/delivery-orders-search/delivery-orders-search.component';
+
 const routes: Routes = [  
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -100,6 +104,9 @@ const routes: Routes = [
   { path: 'hallorders/new', component: HallOrdersNewComponent },
   { path: 'hallorders/edit/:id', component: HallOrdersEditComponent },
 
+  { path: 'deliveryorders', component: DeliveryOrdersSearchComponent },
+  { path: 'deliveryorders/new', component: DeliveryOrdersNewComponent },
+  { path: 'deliveryorders/edit/:id', component: DeliveryOrdersEditComponent },
 
 ];
 
