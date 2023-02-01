@@ -1,0 +1,95 @@
+<p class="error-message" *ngIf="unitsError?.message">
+    {{unitsError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="unitsWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<p class="error-message" *ngIf="eatablesError?.message">
+    {{eatablesError.message}}
+</p> 
+<p class="waiting-icon" *ngIf="eatablesWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<form class="form-edit" *ngIf="isDependecyReady()" [formGroup]="alarmForm" (ngSubmit)="handlePersistence()">
+
+    <input type="hidden" formControlName="id" />
+
+    <label>Comestível:
+        <label *ngIf="eatableError" class="warning-edit">
+            {{eatableError}}
+        </label>
+        <select formControlName="eatableId"  
+                class="select-edit"
+                required
+                >
+            <option value="">
+                ...
+            </option>
+            <option value={{eatable.id}} *ngFor="let eatable of eatables">
+                {{eatable.name}}
+            </option>
+        </select>
+    </label>
+
+    <label>Quantidade mínima:
+        <label *ngIf="minimumQuantityError" class="warning-edit">
+            {{minimumQuantityError}}
+        </label>
+        <input type="number" 
+               class="input-edit input-edit-number"
+               formControlName="minimumQuantity"  
+               min = "1"
+        />
+    </label>
+
+    <label>Unidade:
+        <label *ngIf="unitError" class="warning-edit">
+            {{unitError}}
+        </label>
+        <select formControlName="unityId"  
+                class="select-edit"
+                required
+                >
+            <option value="">
+                ...
+            </option>
+            <option value={{unit.id}} *ngFor="let unit of units">
+                {{unit.name}}
+            </option>
+        </select>
+    </label>
+
+    <label>Validade:
+        <label *ngIf="validityInDaysError" class="warning-edit">
+            {{validityInDaysError}}
+        </label>
+        <input type="number" 
+               class="input-edit input-edit-number"
+               formControlName="validityInDays"  
+               min = "1"
+        />
+    </label>
+
+    <input type="submit" 
+           class="input-edit-submit"
+           value="Enviar" 
+           *ngIf="newOrEdit"/>
+
+    <div *ngIf="!newOrEdit">
+        <div class="warning-edit">
+            Atenção! Esta ação não pode ser desfeita
+        </div>
+        <div class="clear-both">
+        </div>
+        <div>
+            <input type="submit" 
+                   class="input-edit-submit-remove"
+                   value="Remover" 
+            />
+        </div>
+    </div>
+    
+</form>
+

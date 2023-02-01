@@ -1,0 +1,13 @@
+<h1 class="h1-edit">Remover alarme</h1>
+
+<p class="error-message-edit" *ngIf="alarmError?.message">
+    {{alarmError.message}}
+</p>  
+
+<p class="waiting-icon-edit" *ngIf="alarmWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<app-alarms [sendData]="sendDataFunctionPointer"
+               [setFormComponent]="setFormComponentFunctionPointer"
+></app-alarms>

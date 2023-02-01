@@ -70,6 +70,11 @@ import { DeliveryOrdersSearchComponent } from './delivery-orders-all/delivery-or
 import { DeliveryOrdersEditComponent } from './delivery-orders-all/delivery-orders-edit/delivery-orders-edit.component';
 import { DeliveryOrdersNewComponent } from './delivery-orders-all/delivery-orders-new/delivery-orders-new.component';
 import { DeliveryOrdersMenuItemsComponent } from './delivery-orders-all/delivery-orders/delivery-orders-menu-items/delivery-orders-menu-items.component';
+import { AlarmsComponent } from './alarms-all/alarms/alarms.component';
+import { AlarmsEditComponent } from './alarms-all/alarms-edit/alarms-edit.component';
+import { AlarmsNewComponent } from './alarms-all/alarms-new/alarms-new.component';
+import { AlarmsRemoveComponent } from './alarms-all/alarms-remove/alarms-remove.component';
+import { AlarmsSearchComponent } from './alarms-all/alarms-search/alarms-search.component';
 
 @NgModule({
   declarations: [
@@ -135,6 +140,11 @@ import { DeliveryOrdersMenuItemsComponent } from './delivery-orders-all/delivery
     DeliveryOrdersEditComponent,
     DeliveryOrdersNewComponent,
     DeliveryOrdersMenuItemsComponent,
+    AlarmsComponent,
+    AlarmsEditComponent,
+    AlarmsNewComponent,
+    AlarmsRemoveComponent,
+    AlarmsSearchComponent,
   ],
   imports: [
     BrowserModule,
