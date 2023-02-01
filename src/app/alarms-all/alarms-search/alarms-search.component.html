@@ -1,0 +1,108 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<h1 class="h1-list">
+    Alarmes
+</h1>    
+
+<form class="form-list" #form="ngForm" (ngSubmit)="handleSubmit(form)">
+
+    <div class="main-filter">
+
+        <div class="left-filter">
+            
+            <label>
+                <input type="radio" 
+                      class="input-list"                                        
+                      id="eatable" 
+                      name="eatable" 
+                      [checked]="!filter.eatableDisabled"   
+                      (change)="eatableSpecificChange($event)"
+                      />
+                Comestível
+            </label>
+            <select [(ngModel)]="filter.eatable"
+                    #type="ngModel"
+                    name="eatable" 
+                    disabled={{filter.eatableDisabled}}
+                    class="select-list"
+            >
+                <option value={{eatable.id}} *ngFor="let eatable of eatables">
+                    {{eatable.name}}
+                </option>                  
+            </select>              
+
+        </div>
+
+        <div className="right-filter">
+            <label>
+                <input type="radio" 
+                       class="input-list"
+                       id="eatable" 
+                       name="eatable" 
+                       (change)="eatableAnyChange($event)"
+                       [checked]="filter.eatableDisabled" 
+                       value="*"  />
+                Qualquer
+            </label>
+        </div>
+
+    </div>
+
+    <div>
+        <input type="submit" 
+            class="input-list-submit" 
+            value="Pesquisar" />                            
+    </div> 
+    <div class='clear-both'>
+    </div> 
+
+</form>
+
+<div class="button-new-list-container">
+    <a [routerLink]="['/alarms/new']"  >
+        <button class='button-new-list'>
+            <mat-icon>add_to_photos</mat-icon>
+        </button>                
+    </a>    
+</div>
+
+<p class="error-message" *ngIf="alarmsError?.message">
+    {{alarmsError.message}}
+</p>  
+<p class="error-message" *ngIf="eatablesError?.message">
+    {{eatablesError.message}}
+</p>
+
+<p class="waiting-icon" *ngIf="eatablesWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+<p class="waiting-icon" *ngIf="alarmsWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<div class="card-container">
+
+    <div *ngFor="let item of alarms" >
+
+        <div class='card'>
+            <div>
+                {{getEatableName(item.eatableId)}}
+            </div>             
+            <div>
+                <a [routerLink]="['/alarms/edit', item.id]"  >
+                    <button class='button-edit-list'>
+                        <mat-icon>edit</mat-icon>
+                    </button>                       
+                </a>       
+                <a [routerLink]="['/alarms/remove', item.id]"  >
+                    <button class='button-remove-list'>
+                        <mat-icon>delete</mat-icon>
+                    </button>                       
+                </a>                                                                                  
+            </div>                    
+        </div>
+
+    </div>
+
+</div>
+

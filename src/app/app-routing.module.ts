@@ -54,6 +54,11 @@ import { DeliveryOrdersNewComponent } from './delivery-orders-all/delivery-order
 import { DeliveryOrdersEditComponent } from './delivery-orders-all/delivery-orders-edit/delivery-orders-edit.component';
 import { DeliveryOrdersSearchComponent } from './delivery-orders-all/delivery-orders-search/delivery-orders-search.component';
 
+import { AlarmsNewComponent } from './alarms-all/alarms-new/alarms-new.component';
+import { AlarmsEditComponent } from './alarms-all/alarms-edit/alarms-edit.component';
+import { AlarmsRemoveComponent } from './alarms-all/alarms-remove/alarms-remove.component';
+import { AlarmsSearchComponent } from './alarms-all/alarms-search/alarms-search.component';
+
 const routes: Routes = [  
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -107,6 +112,11 @@ const routes: Routes = [
   { path: 'deliveryorders', component: DeliveryOrdersSearchComponent },
   { path: 'deliveryorders/new', component: DeliveryOrdersNewComponent },
   { path: 'deliveryorders/edit/:id', component: DeliveryOrdersEditComponent },
+
+  { path: 'alarms', component: AlarmsSearchComponent },
+  { path: 'alarms/new', component: AlarmsNewComponent },
+  { path: 'alarms/edit/:id', component: AlarmsEditComponent },
+  { path: 'alarms/remove/:id', component: AlarmsRemoveComponent },
 
 ];
 
