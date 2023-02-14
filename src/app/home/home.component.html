@@ -1,1 +1,62 @@
-<p>home works!</p>
+<h1 class="h1-list" >
+    Home
+</h1>   
+
+<h2 class="h1-list" >
+    Alarmes de quantidade
+</h2>
+
+<p class="error-message" *ngIf="quantityAlarmsTriggeredError?.message">
+    {{quantityAlarmsTriggeredError.message}}
+</p>  
+
+<p class="waiting-icon" *ngIf="quantityAlarmsTriggeredWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<div class="card-container" >
+
+    <div *ngFor="let item of quantityAlarmsTriggered" >
+
+        <div class='card'>
+            <div>
+                Mínimo: {{item.minimumQuantity}}
+            </div>  
+            <div>
+                Verificado: {{item.verifiedQuantity}}
+            </div>                                      
+        </div>
+
+    </div>
+
+</div>
+
+<br/>
+<h2 class="h1-list">
+    Alarmes de validade
+</h2>
+
+<p class="error-message" *ngIf="validityAlarmsTriggeredError?.message">
+    {{validityAlarmsTriggeredError.message}}
+</p>  
+
+<p class="waiting-icon" *ngIf="validityAlarmsTriggeredWaiting">
+    <mat-icon>hourglass_empty</mat-icon>
+</p>
+
+<div class="card-container">
+
+    <div *ngFor="let item of validityAlarmsTriggered" >
+
+        <div class='card'>
+            <div>
+                Validade: {{item.validityInDays}}
+            </div> 
+            <div>
+                Estragado: {{item.possiblySpoiled}}
+            </div>                                                   
+        </div>
+
+    </div>
+
+</div>
