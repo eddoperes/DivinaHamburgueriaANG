@@ -11,7 +11,7 @@ import { UnitsService } from 'src/app/services/units.service';
 
 //form
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { Ingredient } from 'src/app/module/ingredient';
+//import { Ingredient } from 'src/app/module/ingredient';
 
 @Component({
   selector: 'app-menu-items-recipe',
@@ -143,17 +143,6 @@ export class MenuItemsRecipeComponent implements OnInit {
     }, 100);
     this.accordionPanelStyle = 'display:block';
 
-  }
-
-  public AccordionClick(e : any): void {
-    e.preventDefault();
-    e.target.classList.toggle("active");
-    var panel = e.target?.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
   }
 
   public newItem (e : any): void  {

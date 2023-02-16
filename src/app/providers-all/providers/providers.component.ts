@@ -76,17 +76,6 @@ export class ProvidersComponent implements OnInit {
     this.accordionPhonePanelStyle = 'display:block';
   }
 
-  public accordionClick(e : any): void {
-    e.preventDefault();
-    e.target.classList.toggle("accordion-active");
-    var panel = e.target?.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  }
-
   public isDependecyReady() : boolean{
     //if (this.units.length === 0)
     //  return false;

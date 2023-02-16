@@ -26,31 +26,17 @@
         />
     </label>
 
-    <div class='accordion-container'>
-        <button class="accordion-button" 
-                (click)="accordionClick($event)"            
-                >Endereço
-        </button>
-        <div class="accordion-panel" 
-             [style]="accordionAddressPanelStyle"
-        >
-            <app-address [setFormComponent]="setAddressFormComponentFunctionPointer"
-            ></app-address>
-        </div>
-    </div>
+    <app-accordion [open]="true"
+                   [title]="'Endereço'" >
+        <app-address [setFormComponent]="setAddressFormComponentFunctionPointer"
+        ></app-address>
+    </app-accordion>
 
-    <div class='accordion-container'>
-        <button class="accordion-button" 
-                (click)="accordionClick($event)"            
-                >Telefone
-        </button>
-        <div class="accordion-panel" 
-            [style]="accordionPhonePanelStyle"
-        >
-            <app-phone [setFormComponent]="setPhoneFormComponentFunctionPointer"
-            ></app-phone>
-        </div>
-    </div>
+    <app-accordion [open]="true"
+                   [title]="'Telefone'" >
+        <app-phone [setFormComponent]="setPhoneFormComponentFunctionPointer"
+        ></app-phone>
+    </app-accordion>
 
     <input type="submit" 
            class="input-edit-submit"

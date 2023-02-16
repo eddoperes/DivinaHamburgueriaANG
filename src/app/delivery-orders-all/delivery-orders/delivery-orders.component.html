@@ -42,26 +42,17 @@
         />
     </label>
 
-    <div class='accordion-container'>
-        <button class="accordion-button" (click)="AccordionClick($event)">
-          Itens
-        </button>
-        <div class="accordion-panel"
-            [style]="accordionPanelStyle"
-        >
-
-            <div #menuItemsContainer>                
-            </div>
-            
-            <button (click)="newItem($event)"                  
-                    class="input-edit-submit"
-                    [disabled]="disableItemsButtons"
-            >Adicionar</button>
-            <div class="clear-both">                
-            </div>
-
+    <app-accordion [open]="true"
+                   [title]="'Itens'" >
+        <div #menuItemsContainer>                
+        </div>                
+        <button (click)="newItem($event)"                  
+                class="input-edit-submit"
+                [disabled]="disableItemsButtons"
+        >Adicionar</button>
+        <div class="clear-both">                
         </div>
-    </div>
+    </app-accordion>
 
     <input type="hidden" formControlName="state" >
 

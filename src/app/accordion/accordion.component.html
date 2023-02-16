@@ -1,0 +1,24 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class='accordion-container'>
+    <button class="accordion-button" (click)="AccordionClick($event)">
+      {{title}}
+      <mat-icon class='accordion-down'
+                [style]="downShow"
+      >
+        keyboard_arrow_down
+      </mat-icon>
+      <mat-icon class='accordion-up'
+                [style]="upShow"
+      >
+        keyboard_arrow_up
+      </mat-icon>
+    </button>
+    <div class="accordion-panel"
+         [style]="panelShow"
+    >
+        <ng-content></ng-content>        
+    </div>
+</div>
+
+

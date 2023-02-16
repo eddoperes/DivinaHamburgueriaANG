@@ -21,22 +21,12 @@
         />        
     </label>
 
-    <div class='accordion-container'>
-        <button class="accordion-button" 
-                (click)="accordionClick($event)"            
-                >Section 1
-        </button>
-        <div class="accordion-panel" 
-            [style]="accordionPanelStyle"
+    <label>Marca:
+        <input type="text" 
+               class="input-edit input-edit-text" 
+               formControlName="brand"  
         >
-            <label>Marca:
-                <input type="text" 
-                    class="input-edit input-edit-text" 
-                    formControlName="brand"  
-                >
-            </label>
-        </div>
-    </div>
+    </label>
 
     <label>Conteúdo:
         <label *ngIf="contentError" class="warning-edit">

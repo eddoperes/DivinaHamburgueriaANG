@@ -75,6 +75,7 @@ import { AlarmsEditComponent } from './alarms-all/alarms-edit/alarms-edit.compon
 import { AlarmsNewComponent } from './alarms-all/alarms-new/alarms-new.component';
 import { AlarmsRemoveComponent } from './alarms-all/alarms-remove/alarms-remove.component';
 import { AlarmsSearchComponent } from './alarms-all/alarms-search/alarms-search.component';
+import { AccordionComponent } from './accordion/accordion.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +146,7 @@ import { AlarmsSearchComponent } from './alarms-all/alarms-search/alarms-search.
     AlarmsNewComponent,
     AlarmsRemoveComponent,
     AlarmsSearchComponent,
+    AccordionComponent,
   ],
   imports: [
     BrowserModule,

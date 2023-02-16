@@ -46,7 +46,7 @@ export class PurchaseOrdersComponent implements OnInit {
   
   public inventoryItemsInstances: Array<any> = [];
   public newOrEdit: boolean = true;
-  public accordionPanelStyle: string = '';
+  //public accordionPanelStyle: string = '';
   public disableItemsButtons = false;
 
   constructor(private providersService: ProvidersService,
@@ -141,9 +141,10 @@ export class PurchaseOrdersComponent implements OnInit {
         this.inventoryItemsInstances[i].disableItemsButtons = configure.disableInputs;     
       }    
     }, 100);
-    this.accordionPanelStyle = 'display:block';
+    //this.accordionPanelStyle = 'display:block';
   }
 
+  /*
   public AccordionClick(e : any): void {
     e.preventDefault();
     e.target.classList.toggle("active");
@@ -154,6 +155,7 @@ export class PurchaseOrdersComponent implements OnInit {
       panel.style.display = "block";
     }
   }
+  */
 
   public newItem (e : any): void  {
     e.preventDefault();    

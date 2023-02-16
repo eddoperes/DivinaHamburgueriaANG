@@ -186,17 +186,6 @@ export class DeliveryOrdersComponent implements OnInit {
     this.accordionPanelStyle = 'display:block';
   }
 
-  public AccordionClick(e : any): void {
-    e.preventDefault();
-    e.target.classList.toggle("active");
-    var panel = e.target?.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  }
-
   public newItem (e : any): void  {
     e.preventDefault();    
 
