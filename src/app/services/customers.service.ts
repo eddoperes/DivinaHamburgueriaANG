@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CustomersService {
 
-  private url: string = `${environment.url}/customers`;
+  private url: string = `${environment.url}/customers/${environment.version}`;
 
   constructor(private http: HttpClient) { }
 

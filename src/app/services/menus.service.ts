@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class MenusService {
 
-  private url: string = `${environment.url}/menus`;
+  private url: string = `${environment.url}/menus/${environment.version}`;
 
   constructor(private http: HttpClient) { }
   

@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class QuantityAlarmsTriggeredService {
 
-  private url: string = `${environment.url}/quantityalarmstriggered`;
+  private url: string = `${environment.url}/quantityalarmstriggered/${environment.version}`;
 
   constructor(private http: HttpClient) { }
 

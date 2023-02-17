@@ -10,7 +10,7 @@ import { Eatable } from '../module/eatable';
 })
 export class InventoryItemsService {
 
-  private url: string = `${environment.url}/inventoryitems`;
+  private url: string = `${environment.url}/inventoryitems/${environment.version}`;
 
   constructor(private http: HttpClient) { }
   

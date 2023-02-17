@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  private url: string = `${environment.url}/Logins/LoginUser`;
+  private url: string = `${environment.url}/Logins/${environment.version}/LoginUser`;
 
   constructor(private http: HttpClient) { }
 

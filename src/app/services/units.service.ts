@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UnitsService {
 
-  private url: string = `${environment.url}/units`;
+  private url: string = `${environment.url}/units/${environment.version}`;
 
   constructor(private http: HttpClient) { }
 

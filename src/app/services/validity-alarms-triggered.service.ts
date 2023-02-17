@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ValidityAlarmsTriggeredService {
 
-  private url: string = `${environment.url}/validityalarmstriggered`;
+  private url: string = `${environment.url}/validityalarmstriggered/${environment.version}`;
 
   constructor(private http: HttpClient) { }
 

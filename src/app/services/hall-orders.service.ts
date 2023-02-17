@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HallOrdersService {
 
-  private url: string = `${environment.url}/hallorders`;
+  private url: string = `${environment.url}/hallorders/${environment.version}`;
 
   constructor(private http: HttpClient) { }
 
